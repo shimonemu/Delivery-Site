@@ -1,2 +1,4 @@
 # Delivery-Site
-Project Management
+Project Management Course
+
+Kfir Nahmani, Shimon Emuna, Or Shalit, Tomer Angel
