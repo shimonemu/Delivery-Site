@@ -1,5 +1,22 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    if (Session["ManagerLoggedIn"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutManagers.cshtml";
+    }
+    else if (Session["UserLoggedIn"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutUsers.cshtml";
+    }
+    else if (Session["CompanyLoggedIn"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutCompanys.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
 }
 
 <div class="jumbotron">
