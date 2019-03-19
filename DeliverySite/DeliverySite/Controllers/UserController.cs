@@ -38,6 +38,7 @@ namespace DeliverySite.Controllers
 
                 //UserDal dal = new UserDal();
                 
+                
                 dal.User.Add(usr);
                 dal.SaveChanges();
                 Session["UserName"] = usr.UserName;
@@ -46,6 +47,31 @@ namespace DeliverySite.Controllers
                 return View("ConfirmSignUp", usr);
             }
             return View("../Home/SignUp", usr);
+        }
+
+        public ActionResult Login()
+        {
+            User usr = new User();
+            ViewBag.UserNow = "null";
+            return View(usr);
+        }
+        
+        public ActionResult CheckLogin(User usr)
+        {
+            UserDal dal = new UserDal();
+            List<User> usrList = (from x in dal.User where x.UserName == usr.UserName && x.Password == usr.Password select x).ToList<User>();
+            if (usrList.Count() == 0)
+            {
+                ViewBag.WarningMessage = "Login Failed.";
+                
+                return View("Login", usr);
+            }
+            else
+            {
+                Session["UserLoggedIn"] = usr.UserName;
+                Session["UserName"] = usr.UserName;
+                return View("../Home/Index");
+            }
         }
     }
 }

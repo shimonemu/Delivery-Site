@@ -41,7 +41,7 @@ namespace DeliverySite.Controllers
         public ActionResult Login()
         {
 
-            ViewBag.Message = "DoctorLogin";
+            ViewBag.Message = "ManagerLogin";
             if (Session["UserName"] != null)
             {
                 ViewBag.UserName = Session["UserName"];
