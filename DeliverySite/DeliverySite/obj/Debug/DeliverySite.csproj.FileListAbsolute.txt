@@ -78,3 +78,7 @@ C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Deb
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.csproj.CopyComplete
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.dll
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.pdb
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\EntityFramework.dll
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\EntityFramework.SqlServer.dll
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\EntityFramework.xml
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\EntityFramework.SqlServer.xml
