@@ -38,7 +38,6 @@ namespace DeliverySite.Controllers
 
                 //UserDal dal = new UserDal();
                 
-                
                 dal.User.Add(usr);
                 dal.SaveChanges();
                 Session["UserName"] = usr.UserName;
