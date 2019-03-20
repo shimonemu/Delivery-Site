@@ -31,8 +31,8 @@ namespace DeliverySite.Controllers
         public ActionResult SignOut()
         {
             Session["UserName"] = null;
-            Session["DoctorLoggedIn"] = null;
-            Session["PatientLoggedIn"] = null;
+            Session["ManagerLoggedIn"] = null;
+            Session["UserLoggedIn"] = null;
             Session["UserId"] = null;
 
             return View("Index");

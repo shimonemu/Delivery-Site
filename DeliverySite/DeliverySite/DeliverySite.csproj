@@ -135,10 +135,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Dal\ManagerDal.cs" />
     <Compile Include="Dal\UserDal.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="ModelView\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -183,10 +185,11 @@
     <Content Include="Views\Shared\_LayoutUsers.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Manager\ManagerLogin.cshtml" />
+    <Content Include="Views\Shared\_LayoutManagers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Manager\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

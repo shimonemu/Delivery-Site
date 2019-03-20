@@ -20,10 +20,10 @@ namespace DeliverySite.Controllers
         {
             Manager mng = new Manager();
             ViewBag.UserNow = "null";
-            return View(mng);
+            return View("ManagerLogin",mng);
         }
 
-        public ActionResult CheckLogin(User mng)
+        public ActionResult CheckLogin(Manager mng)
         {
             ManagerDal dal = new ManagerDal();
             List<Manager> mngList = (from x in dal.Manager where x.UserName == mng.UserName && x.Password == mng.Password select x).ToList<Manager>();
@@ -31,12 +31,12 @@ namespace DeliverySite.Controllers
             {
                 ViewBag.WarningMessage = "Login Failed.";
 
-                return View("Login", mng);
+                return View("ManagerLogin", mng);
             }
             else
             {
-                Session["UserLoggedIn"] = mng.UserName;
-                Session["ManagerName"] = mng.UserName;
+                Session["ManagerLoggedIn"] = mng.UserName;
+                Session["UserName"] = mng.UserName;
                 return View("../Home/Index");
             }
         }
