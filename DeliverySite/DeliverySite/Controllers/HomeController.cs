@@ -33,6 +33,7 @@ namespace DeliverySite.Controllers
             Session["UserName"] = null;
             Session["ManagerLoggedIn"] = null;
             Session["UserLoggedIn"] = null;
+            Session["CompanyLoggedIn"] = null;
             Session["UserId"] = null;
 
             return View("Index");

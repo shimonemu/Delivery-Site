@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Delivey Site";
+}
+
+
+
+<style>
+
+    body {
+        background: #E6E6FA;
+        /*background-image: url(https://images.wallpaperscraft.com/image/pizza_tomato_cheese_herbs_75287_1600x900.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;*/
+    }
+
+    .hallo {
+        float: right;
+        margin-top: 15px;
+        font-size: medium;
+    }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Delivery Store</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Home Page", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    <li>@Html.ActionLink("Products", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li id="signout">@Html.ActionLink("Sign out", "SignOut", "Home")</li>
+                </ul>
+                <span class="hallo" style="color:red">Welcome @Session["UserName"]</span>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Delivery Site</p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -73,7 +73,6 @@ C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\Ant
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.csprojAssemblyReference.cache
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.csproj.CoreCompileInputs.cache
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.csproj.CopyComplete
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.dll
