@@ -16,7 +16,19 @@ namespace DeliverySite.Controllers
 
         public ActionResult ShowProducts()
         {
-            return View();
+
+            ProductDal dal = new ProductDal();
+            ProductViewModel pat = new ProductViewModel();
+    
+            List<Product> allProducts =
+                (from x in dal.Product
+                 select x).ToList<Product>();
+            pat = new ProductViewModel();
+            pat.products = allProducts;
+            pat.product = new Product();
+
+            return View(pat);
+
         }
     }
 }
