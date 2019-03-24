@@ -163,3 +163,4 @@ C:\Users\אור\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\Mic
 C:\Users\אור\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.csprojResolveAssemblyReference.cache
 C:\Users\אור\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.dll
 C:\Users\אור\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.pdb
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.csprojAssemblyReference.cache

@@ -139,6 +139,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Dal\CompanyDal.cs" />
     <Compile Include="Dal\ManagerDal.cs" />
+    <Compile Include="Dal\ProductDal.cs" />
     <Compile Include="Dal\UserDal.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -147,6 +148,7 @@
     <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="ModelView\ProductViewModel.cs" />
     <Compile Include="ModelView\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

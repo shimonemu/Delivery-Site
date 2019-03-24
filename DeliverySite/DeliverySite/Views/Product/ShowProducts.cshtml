@@ -1,4 +1,4 @@
-﻿@model MedicalStore.ModelView.ProductViewModel
+﻿@model DeliverySite.ModelView.ProductViewModel
 @{
     ViewBag.Title = "ShowProducts";
 }
@@ -49,23 +49,26 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.product.Product Name)
+            Product ID
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.product.Price)
+            Product Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.product.Company Code)
+            Price
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.product.Product ID)
+            Company Code
         </th>
-        <th></th>
+       
     </tr>
 
     @foreach (var item in Model.products)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrdId)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PrdName)
             </td>
@@ -74,9 +77,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CompCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrdId)
             </td>
         </tr>
     }
