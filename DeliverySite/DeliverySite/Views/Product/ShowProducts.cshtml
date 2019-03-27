@@ -1,14 +1,31 @@
 ﻿@model DeliverySite.ModelView.ProductViewModel
 @{
     ViewBag.Title = "ShowProducts";
+    if (Session["ManagerLoggedIn"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutManagers.cshtml";
+    }
+    else if (Session["UserLoggedIn"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutUsers.cshtml";
+    }
+    else if (Session["CompanyLoggedIn"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutCompanies.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
 }
 
-<h2>Show Products</h2>
+<h2>Products</h2>
 
 
 <style>
     body {
-        background: #E6E6FA;
+        background: white;
     }
 
     .search {
@@ -22,17 +39,17 @@
     }
 
     .headLine {
-        color: deepskyblue;
+        color: white;
         font-size: 130%;
         font-weight: bold;
     }
 
     table#t01 tr:nth-child(even) {
-        background-color: #eee;
+        background-color: white;
     }
 
     table#t01 tr:nth-child(odd) {
-        background-color: #fff;
+        background-color: white;
     }
 
     table {

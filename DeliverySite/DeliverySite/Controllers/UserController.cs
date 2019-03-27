@@ -32,7 +32,7 @@ namespace DeliverySite.Controllers
                 UserViewModel mng = new UserViewModel();
                 if (obj.Count() > 0)
                 {
-                    TempData["exist"] = "User Name is already exist";
+                    TempData["exist"] = "ID is already exist";
                     return View("../Home/SignUp", usr);
                 }
 
