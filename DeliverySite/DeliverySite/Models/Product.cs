@@ -12,7 +12,7 @@ namespace DeliverySite.Models
         public string PrdName { get; set; }
 
         [Required]
-        public string price { get; set; }
+        public int price { get; set; }
 
         [Required]
         public string CompCode { get; set; }
