@@ -3,3 +3,7 @@ DeliverySite/.vs/DeliverySite/v15/.suo
 *.tmp
 DeliverySite/.vs/DeliverySite/v15/.suo
 DeliverySite/.vs/DeliverySite/v15/.suo
+*.ide-shm
+*.ide-wal
+*.dll
+*.pdb
