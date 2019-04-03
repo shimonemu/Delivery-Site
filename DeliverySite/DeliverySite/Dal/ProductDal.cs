@@ -9,7 +9,6 @@ namespace DeliverySite.Dal
 {
     public class ProductDal : DbContext
     {
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
