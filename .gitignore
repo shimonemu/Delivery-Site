@@ -267,3 +267,6 @@ _Pvt_Extensions
 =======
 *.ide-shm
 >>>>>>> 6f3d25402cb00c985c27cdfba0ccf6435383322c
+*.dll
+*.pdb
+*.ide-shm
