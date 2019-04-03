@@ -1,4 +1,4 @@
-###################
+﻿###################
 # compiled source #
 ###################
 *.com
@@ -7,6 +7,7 @@
 *.exe
 *.pdb
 *.dll.config
+*.config
 *.cache
 *.suo
 # Include dlls if they’re in the NuGet packages directory
