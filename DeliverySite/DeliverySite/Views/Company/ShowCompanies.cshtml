@@ -1,0 +1,131 @@
+﻿@model DeliverySite.ModelView.CompanyViewModel
+@using DeliverySite.Models
+@{
+
+    ViewBag.Title = "Show Companies";
+    if (Session["ManagerLoggedIn"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutManagers.cshtml";
+    }
+    else if (Session["UserLoggedIn"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutUsers.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
+}
+
+<h2>Show Companies</h2>
+<style>
+
+    body {
+        background: #E6E6FA;
+    }
+
+    .search {
+        float: left;
+        margin: 20px;
+    }
+
+    table#t01 th {
+        background-color: black;
+        color: white;
+    }
+
+    .headLine {
+        color: deepskyblue;
+        font-size: 130%;
+        font-weight: bold;
+    }
+
+    table#t01 tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    table#t01 tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+@*<form class="search" action="SearchPatients" method="post">
+        <div>
+            <div class="col search">
+                <input type="text" class="form-control" placeholder="Search by id" name="Id" value="@Model.patient.Id">
+                @<button class="btn btn-primary" submit" style="margin-top:10px;">Search</button>@
+            </div>
+            <div class="col search">
+                <input type="text" class="form-control" placeholder="Search by User Name" name="UserName" value="@Model.patient.UserName">
+            </div>
+            <div class="col search">
+                <input type="text" class="form-control" placeholder="Search by First Name" name="FirstName" value="@Model.patient.FirstName">
+            </div>
+            <div class="col search">
+                <input type="text" class="form-control" placeholder="Search by Last Name" name="LastName" value="@Model.patient.LastName">
+            </div>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit" style="margin-top:10px;">Search</button>
+    </form>
+    @TempData["error_search"]*@
+
+<table class="table">
+    <tr>
+        <th>
+            Company
+        </th>
+        <th>
+           Code
+        </th>
+    
+    </tr>
+    @foreach (var item in Model.companies)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompCode)
+            </td>
+            
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>*@
+        </tr>
+    }
+</table>
+@*<table id="t01">
+        <tr class="headLine">
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>ID</td>
+            <td>User Name</td>
+        </tr>
+        @foreach (Patient obj in Model.patients)
+        {
+            <tr>
+                <td>@obj.FirstName</td>
+                <td>@obj.LastName</td>
+                <td>@obj.Id</td>
+                <td>@obj.UserName</td>
+
+            </tr>
+        }
+    </table>*@
+
+@*@{
+        WebGrid obj = new WebGrid(Model.patients);
+    }
+    @obj.GetHtml()*@
