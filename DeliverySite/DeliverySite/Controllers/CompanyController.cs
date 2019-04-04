@@ -1,5 +1,6 @@
 ﻿using DeliverySite.Dal;
 using DeliverySite.Models;
+using DeliverySite.ModelView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,22 @@ namespace DeliverySite.Controllers
                 Session["UserName"] = cmpList[0].CompName;
                 return View("../Home/Index");
             }
+        }
+
+        public ActionResult ShowCompanies()
+        {
+            CompanyDal dal = new CompanyDal();
+            CompanyViewModel cmp = new CompanyViewModel();
+
+            List<Company> allCompanies =
+                (from x in dal.Company
+                 select x).ToList<Company>();
+            cmp = new CompanyViewModel();
+            cmp.companies = allCompanies;
+            cmp.company = new Company();
+
+            return View(cmp);
+
         }
     }
 }
