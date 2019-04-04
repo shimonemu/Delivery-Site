@@ -4,6 +4,7 @@ using DeliverySite.ModelView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -93,6 +94,55 @@ namespace DeliverySite.Controllers
         public ActionResult UserWindow()
         {
             return View();
+        }
+
+        public ActionResult Delete(string id)
+        {
+            UserDal db = new UserDal();
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.User.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            UserViewModel usr = new UserViewModel();
+            db.User.Remove(user);
+            db.SaveChanges();
+
+            List<User> users =
+                (from x in db.User
+                 select x).ToList<User>();
+            usr.user = user;
+            usr.users = users;
+            //return View("ShowUsers",usr);
+            return RedirectToAction("../User/ShowUsers",usr);
+
+        }
+
+        // POST: Patientsssss/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            UserDal db = new UserDal();
+            User user = db.User.Find(id);
+            db.User.Remove(user);
+            db.SaveChanges();
+            return RedirectToAction("../User/ShowUsers");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            UserDal db = new UserDal();
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
     }
