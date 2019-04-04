@@ -148,6 +148,7 @@
     <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="ModelView\CompanyViewModel.cs" />
     <Compile Include="ModelView\ProductViewModel.cs" />
     <Compile Include="ModelView\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,6 +198,10 @@
     <Content Include="Views\Company\CompanyLogin.cshtml" />
     <Content Include="Views\Shared\_LayoutCompanies.cshtml" />
     <Content Include="Views\Product\ShowProducts.cshtml" />
+    <Content Include="Views\Manager\ManagerWindow.cshtml" />
+    <Content Include="Views\User\ShowUsers.cshtml" />
+    <Content Include="Views\Company\ShowCompanies.cshtml" />
+    <Content Include="Views\User\UserWindow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

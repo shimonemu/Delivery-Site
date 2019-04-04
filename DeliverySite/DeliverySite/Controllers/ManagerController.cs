@@ -40,5 +40,10 @@ namespace DeliverySite.Controllers
                 return View("../Home/Index");
             }
         }
+
+        public ActionResult ManagerWindow()
+        {
+            return View();
+        }
     }
 }

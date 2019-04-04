@@ -62,6 +62,21 @@
     }
 </style>
 
+<form class="search" action="SearchProducts" method="post">
+    <div>
+        
+        
+        <div class="col search">
+            <input type="text" class="form-control" placeholder="Search by Product" name="PrdName" value="@Model.product.PrdName">
+        </div>
+        <div class="col search">
+            <input type="text" class="form-control" placeholder="Search by Company Code" name="CompCode" value="@Model.product.CompCode">
+        </div>
+    </div>
+    <button class="btn btn-primary btn-block" type="submit" style="margin-top:10px;">Search</button>
+</form>
+
+
 
 <table class="table">
     <tr>
@@ -77,7 +92,7 @@
         <th>
             Company Code
         </th>
-       
+
     </tr>
 
     @foreach (var item in Model.products)

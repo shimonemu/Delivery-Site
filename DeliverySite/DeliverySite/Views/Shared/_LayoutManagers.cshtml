@@ -45,8 +45,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    
-                    <li>@Html.ActionLink("Products", "Index", "Home")</li>
+
+                    <li>@Html.ActionLink("Manager Menu", "ManagerWindow", "Manager")</li>
+                    <li>@Html.ActionLink("Products", "ShowProducts", "Product")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li id="signout">@Html.ActionLink("Sign out", "SignOut", "Home")</li>
@@ -63,7 +64,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Delivery Site</p>
+            <p>&copy; @DateTime.Now.Year - Delivery Site - Kfir Nahamani & Or Shalit & Shimon Emuna & Tomer Angel</p>
         </footer>
     </div>
 

@@ -73,5 +73,27 @@ namespace DeliverySite.Controllers
                 return View("../Home/Index");
             }
         }
+
+        public ActionResult ShowUsers()
+        {
+            UserDal dal = new UserDal();
+            UserViewModel usr = new UserViewModel();
+
+            List<User> allUsers =
+                (from x in dal.User
+                 select x).ToList<User>();
+            usr = new UserViewModel();
+            usr.users = allUsers;
+            usr.user = new User();
+
+            return View(usr);
+            
+        }
+
+        public ActionResult UserWindow()
+        {
+            return View();
+        }
+
     }
 }
