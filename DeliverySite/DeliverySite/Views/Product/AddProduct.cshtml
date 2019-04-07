@@ -1,0 +1,143 @@
+﻿@model DeliverySite.ModelView.ProductViewModel
+@using DeliverySite.Models;
+
+@{
+    Layout = "~/Views/Shared/_LayoutManagers.cshtml";
+
+}
+
+
+
+<style>
+    body {
+        background: #E6E6FA;
+    }
+</style>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="~/Scripts/angular.js"></script>
+    <script>
+
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function ($scope,$http) {
+
+            $scope.x = {
+                "Color": "",
+                "Number": "",
+                "msg": ""
+            };
+            $scope.count = 0;
+            $scope.myFunc = function () {
+                $scope.count++;
+                if ($scope.x.Number > 20) {
+                    $scope.x.Color = "lightgreen"
+                    $scope.x.msg="Valid!"
+                }
+                else {
+                    $scope.x.Color = "lightcoral"
+                    $scope.x.msg="Invalid!"
+                }
+            };
+            $scope.Product = {};
+
+            $scope.Add = function () {
+                    $http({ method: "POST", data: $scope.x, url: "AddProductToDB" }).
+                        then(function (response) {
+                            $scope.Product = response.data;
+                    }, function (error) {
+                        console.log(error, 'can not get data.');
+                    });
+                };
+
+            $scope.updateUser = function () {
+                    $http({ method: "GET", url: "getJson" }).
+                        then(function (response) {
+                            $scope.Product = response.data;
+                    }, function (error) {
+                        console.log(error, 'load user can not get data');
+                    });
+            };
+            $scope.updateUser();
+        });
+
+    </script>
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="myCtrl">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Add Product</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <form role="form" action="../Product/AddProductToDB">
+
+
+                        <div class="form-group">
+                            <label class="loginFormElement">Name:</label>
+                            <input type="text" class="form-control" id="PrdName" name="PrdName" @*value="@Model.product.PrdName"*@>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="loginFormElement">Product Price:</label>
+                            <input style="background-color:{{x.Color}}" ng-change="myFunc()" class="form-control" id="price" name="price" ng-model="x.Number" value="@Model.product.price">
+                            <div> {{x.msg}}</div>
+                            <div>@Html.ValidationMessageFor(x => x.product.price)</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="loginFormElement">Company Code:</label>
+                            <input class="form-control" id="CompCode" name="CompCode" readonly="readonly" value=@Session["CompCode"]>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="loginFormElement">ID:</label>
+                            <input type="text" class="form-control" id="PrdId" name="PrdId" @*value=@Model.product.PrdId*@>
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <br />
+                            <button type="submit" id="loginSubmit" class="btn btn-success loginFormElement" ng-click="Add()">Add Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @Html.ValidationSummary()
+            <h3>@TempData["existPrd"]</h3>
+        </div>
+
+
+        <h2>Existing Products:</h2>
+
+        <table class="table table-bordered">
+            <tr>
+                <td style="background-color:aquamarine">Name</td>
+                <td style="background-color:aquamarine">Price</td>
+                <td style="background-color:aquamarine">Company Code</td>
+                <td style="background-color:aquamarine">ID</td>
+            </tr>
+            <tr ng-repeat="prd in Product">
+                <td>{{prd.PrdName}}</td>
+                <td>{{prd.price}}</td>
+                <td>{{prd.CompCode}}</td>
+                <td>{{prd.PrdId}}</td>
+                
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
+
+
+
+
+

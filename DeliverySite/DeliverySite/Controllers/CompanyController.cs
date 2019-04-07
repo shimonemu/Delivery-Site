@@ -38,6 +38,7 @@ namespace DeliverySite.Controllers
             {
                 Session["CompanyLoggedIn"] = cmpList[0].CompName;
                 Session["UserName"] = cmpList[0].CompName;
+                Session["CompCode"] = cmpList[0].CompCode;
                 return View("../Home/Index");
             }
         }
@@ -56,6 +57,11 @@ namespace DeliverySite.Controllers
 
             return View(cmp);
 
+        }
+
+        public ActionResult CompanyWindow()
+        {
+            return View();
         }
     }
 }

@@ -62,6 +62,74 @@ namespace DeliverySite.Controllers
             prd.product = new Product();
             return View("ShowProducts",prd);
         }
+
+        public ActionResult AddProduct()
+        {
+            ProductDal dal = new ProductDal();
+            List<Product> objProducts = dal.Product.ToList<Product>();
+            ProductViewModel pvm = new ProductViewModel();
+
+            pvm.product = new Product();
+            pvm.products = objProducts;
+            return View(pvm);
+        }
+
+        public ActionResult getJson()
+        {
+            ProductDal Dal = new ProductDal();
+            List<Product> val =
+                    (from x in Dal.Product
+                     select x).ToList<Product>();
+
+            return Json(val, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult AddProductToDB(Product prd)
+        {
+            ProductViewModel pvm = new ProductViewModel();
+
+            Product obj = new Product();
+            obj.PrdId = prd.PrdId;
+            obj.PrdName = prd.PrdName;
+            obj.price = prd.price;
+            obj.CompCode = prd.CompCode;
+
+
+            ProductDal dal = new ProductDal();
+
+            if (ModelState.IsValid)
+            {
+                List<Product> obj2 =
+                        (from x in dal.Product
+                         where x.PrdId == prd.PrdId
+                         select x).ToList<Product>();
+                ProductViewModel mng2 = new ProductViewModel();
+
+                if (obj2.Count() > 0)
+                {
+                    TempData["existPrd"] = "This product is already exist";
+                    pvm.products = dal.Product.ToList<Product>();
+                    pvm.product = prd;
+                    return View("AddProduct", pvm);
+                }
+
+                dal.Product.Add(prd);
+                dal.SaveChanges();
+                pvm.product = new Product();
+                TempData["existPrd"] = "The product added successfuly!";
+                return View("AddProduct", pvm);
+            }
+            else
+            {
+                TempData["existPrd"] = "Product Addition Failed!";
+                pvm.product = prd;
+            }
+
+            pvm.products = dal.Product.ToList<Product>();
+            List<Product> objProduct = dal.Product.ToList<Product>();
+            return View("AddProduct",pvm);
+        }
         
 
 
