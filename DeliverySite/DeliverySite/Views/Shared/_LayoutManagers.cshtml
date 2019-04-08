@@ -18,6 +18,16 @@
         margin-top: 15px;
         font-size: medium;
     }
+
+    .footer {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 1rem;
+        background-color: #efefef;
+        text-align: center;
+    }
 </style>
 
 <!DOCTYPE html>
@@ -59,20 +69,21 @@
             </div>
         </div>
     </div>
-
-
-
+    
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Delivery Site - Kfir Nahamani & Or Shalit & Shimon Emuna & Tomer Angel</p>
-        </footer>
+        <div class="footer">
+            <hr />
+
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Delivery Site - Kfir Nahamani & Or Shalit & Shimon Emuna & Tomer Angel</p>
+            </footer>
+        </div>
     </div>
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 </body>
 </html>

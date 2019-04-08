@@ -209,7 +209,6 @@ namespace DeliverySite.Controllers
             (from x in dal.Company
              where x.CompCode == com.CompCode
              select x).ToList<Company>();
-                DoctorViewModel doc2 = new DoctorViewModel();
 
                 if (id_exist_list.Count() > 0)
                 {
