@@ -8,9 +8,7 @@
 
     body {
         background: #E6E6FA;
-        /*background-image: url(https://images.wallpaperscraft.com/image/pizza_tomato_cheese_herbs_75287_1600x900.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;*/
+       
     }
 
     .hallo {
@@ -20,13 +18,10 @@
     }
 
     .footer {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        padding: 1rem;
-        background-color: #efefef;
-        text-align: center;
+        background: #d3d0d0;
+        color: black;
+        line-height: 50px;
+        padding: 0 20px;
     }
 </style>
 
@@ -58,8 +53,8 @@
 
                     <li>@Html.ActionLink("Manager Menu", "ManagerWindow", "Manager")</li>
                     <li>@Html.ActionLink("Products", "ShowProducts", "Product")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     <li id="signout">@Html.ActionLink("Sign out", "SignOut", "Home")</li>
                     <li>@Html.ActionLink("Change Password", "ChangePassword", "Manager")</li>
 
