@@ -156,6 +156,13 @@ namespace DeliverySite.Controllers
         {
             string password = Request.Form["password"];
             string confirmPassword = Request.Form["confirmPassword"];
+
+            if (password.Length < 8 || password.Length > 16 || confirmPassword.Length < 8 || confirmPassword.Length > 16)
+            {
+                TempData["NotGoodPass"] = "The Password have to be 8 to 16 chars long";
+                return View("ChangePassword");
+            }
+
             if (password != confirmPassword)
             {
                 TempData["changePassword"] = "The passwords you entered are not match";
