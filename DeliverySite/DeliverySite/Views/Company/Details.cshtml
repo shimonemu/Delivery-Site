@@ -1,0 +1,52 @@
+﻿@model DeliverySite.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutCompanies.cshtml";
+
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PrdName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrdName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrdId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrdId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "../Company/Edit", new { id = Model.PrdId }) |
+    @Html.ActionLink("Back to List", "../Company/EditProducts")
+</p>

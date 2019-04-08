@@ -12,6 +12,8 @@ namespace DeliverySite.Controllers
 {
     public class UserController : Controller
     {
+
+        public static string userId;
         // GET: User
         public ActionResult Index()
         {
@@ -69,6 +71,7 @@ namespace DeliverySite.Controllers
             }
             else
             {
+                userId = usrList[0].Id;
                 Session["UserLoggedIn"] = usr.UserName;
                 Session["UserName"] = usr.UserName;
                 return View("../Home/Index");
@@ -143,6 +146,30 @@ namespace DeliverySite.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        public ActionResult ConfirmChangePassword()
+        {
+            string password = Request.Form["password"];
+            string confirmPassword = Request.Form["confirmPassword"];
+            if (password != confirmPassword)
+            {
+                TempData["changePassword"] = "The passwords you entered are not match";
+                return View("ChangePassword");
+            }
+            UserDal dal = new UserDal();
+
+            User usr = new User();
+            usr = dal.User.Find(userId);
+
+            usr.Password = password;
+            dal.SaveChanges();
+            TempData["changePassword"] = "Password has been changed!";
+            return View("ChangePassword");
         }
 
     }

@@ -1,0 +1,76 @@
+﻿@model DeliverySite.ModelView.CompanyViewModel
+
+@{
+    ViewBag.Title = "EditCompanies";
+    Layout = "~/Views/Shared/_LayoutManagers.cshtml";
+
+}
+
+<h2>EditCompanies</h2>
+
+<style>
+    body {
+        background: #E6E6FA;
+    }
+
+    .search {
+        float: left;
+        margin: 20px;
+    }
+
+    table#t01 th {
+        background-color: black;
+        color: white;
+    }
+
+    .headLine {
+        color: deepskyblue;
+        font-size: 130%;
+        font-weight: bold;
+    }
+
+    table#t01 tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    table#t01 tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.company.CompCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.company.CompName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.companies)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompName)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.CompCode })
+            </td>
+        </tr>
+    }
+
+</table>
