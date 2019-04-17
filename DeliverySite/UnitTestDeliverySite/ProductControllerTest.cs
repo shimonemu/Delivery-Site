@@ -38,18 +38,20 @@ namespace UnitTestDeliverySite
         public void DeleteProductTest()
         {
             //Arrange
-            ProductController controller = new ProductController();
+            CompanyController controller = new CompanyController();
 
             //Act
             Product prd = new Product();
             prd.PrdId = "1111";
-            prd.PrdName = "abc";
-            prd.price = 100;
-            prd.CompCode = "111222";
-            ViewResult result = controller.AddProductToDB(prd) as ViewResult;
+            //prd.PrdName = "abc";
+            //prd.price = 100;
+            //prd.CompCode = "111222";
 
+            //ViewResult result = controller.DeleteConfirmed(prd.PrdId) as ViewResult;
+            var result = controller.DeleteConfirmed(prd.PrdId) as RedirectToRouteResult;
             //Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual("../Company/EditProducts", result.RouteValues["Action"]);
+            //Assert.IsNotNull(result.View);
         }
 
 
