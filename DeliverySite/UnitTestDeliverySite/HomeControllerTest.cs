@@ -25,19 +25,6 @@ namespace UnitTestDeliverySite
             Assert.AreEqual("Your application description page.", result.ViewBag.Message);
         }
 
-        [TestMethod]
-        public void ChangePasswordUser()
-        {
-            //Arrange
-            UserController controller = new UserController();
-            
-            //Act
-            //ViewResult result = controller.ChangePassword() as ViewResult;
-            ViewResult result2 = controller.ConfirmChangePassword() as ViewResult;
-            
-            //Assert
-            Assert.AreEqual("The Password have to be 8 to 16 chars long", result2.TempData["NotGoodPass"]);
-
-        }
+     
     }
 }

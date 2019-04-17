@@ -2,11 +2,16 @@
 @using DeliverySite.Models;
 
 @{
-    Layout = "~/Views/Shared/_LayoutCompanies.cshtml";
-
+    if (Session["ManagerLoggedIn"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutManagers.cshtml";
+    }
+    else if (Session["CompanyLoggedIn"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutCompanies.cshtml";
+    }
+ 
 }
-
-
 
 <style>
     body {

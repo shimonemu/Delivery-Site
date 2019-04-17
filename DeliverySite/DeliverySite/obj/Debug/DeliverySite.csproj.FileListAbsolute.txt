@@ -168,3 +168,5 @@ C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\ros
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\roslyn\System.Threading.Tasks.Extensions.dll
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\Newtonsoft.Json.pdb
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.csprojAssemblyReference.cache
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.Migrations.InitialCreate.resources
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.csproj.GenerateResource.cache
