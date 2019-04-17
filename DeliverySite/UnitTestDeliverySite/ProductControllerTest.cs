@@ -43,18 +43,31 @@ namespace UnitTestDeliverySite
             //Act
             Product prd = new Product();
             prd.PrdId = "1111";
-            //prd.PrdName = "abc";
-            //prd.price = 100;
-            //prd.CompCode = "111222";
-
-            //ViewResult result = controller.DeleteConfirmed(prd.PrdId) as ViewResult;
+            Company cmp = new Company();
+            cmp.CompCode = "111222";
+            cmp.Password = "123456788";
             var result = controller.DeleteConfirmed(prd.PrdId) as RedirectToRouteResult;
+            ViewResult result2 = controller.CheckLogin(cmp) as ViewResult;
+            
             //Assert
             Assert.AreEqual("../Company/EditProducts", result.RouteValues["Action"]);
-            //Assert.IsNotNull(result.View);
+            
+
+        }
+
+        [TestMethod]
+        public void SearchProductTest()
+        {
+            ProductController controller = new ProductController();
+
+            var result = controller.SearchProducts("abc") as ViewResult;
+
+            Assert.AreEqual("ShowProducts", result.ViewName);
+
         }
 
 
 
-    }
+
+        }
 }

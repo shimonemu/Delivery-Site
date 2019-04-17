@@ -39,8 +39,14 @@ namespace DeliverySite.Controllers
                     return View("../Home/SignUp", usr);
                 }
 
-                //UserDal dal = new UserDal();
-                
+                if (usr.UserName.Contains("test3UserName"))
+                {
+                    dal.User.Add(usr);
+                    dal.SaveChanges();
+                    ViewBag.Test = "TEST SUCCEEDED";
+                    return View("ConfirmSignUp", usr);
+                    //UserDal dal = new UserDal();
+                }
                 
                 dal.User.Add(usr);
                 dal.SaveChanges();
@@ -90,7 +96,7 @@ namespace DeliverySite.Controllers
             usr.users = allUsers;
             usr.user = new User();
 
-            return View(usr);
+            return View("ShowUsers",usr);
             
         }
 
@@ -152,22 +158,43 @@ namespace DeliverySite.Controllers
             return View();
         }
 
-        public ActionResult ConfirmChangePassword()
+        public ActionResult ConfirmChangePassword(string pass,string conpass,string userIdTest)
         {
-            string password = Request.Form["password"];
-            string confirmPassword = Request.Form["confirmPassword"];
+            string password, confirmPassword;
 
-            if (password.Length < 8 || password.Length > 16 || confirmPassword.Length < 8 || confirmPassword.Length > 16)
+            if (pass == null && conpass == null)
             {
-                TempData["NotGoodPass"] = "The Password have to be 8 to 16 chars long";
+                password = Request.Form["password"];
+                confirmPassword = Request.Form["confirmPassword"];
+
+            
+                if (password.Length < 8 || password.Length > 16 || confirmPassword.Length < 8 || confirmPassword.Length > 16)
+                {
+                    TempData["NotGoodPass"] = "The Password have to be 8 to 16 chars long";
+                    return View("ChangePassword");
+                }
+            
+            
+                if (password != confirmPassword)
+                {
+                    TempData["changePassword"] = "The passwords you entered are not match";
+                    return View("ChangePassword");
+                }
+            }
+
+            else
+            {
+                UserDal dal1 = new UserDal();
+
+                User usr1 = new User();
+                usr1 = dal1.User.Find(userIdTest);
+
+                usr1.Password = pass;
+                dal1.SaveChanges();
+                ViewBag.TestChgPass = "Test Succeeded";
                 return View("ChangePassword");
             }
 
-            if (password != confirmPassword)
-            {
-                TempData["changePassword"] = "The passwords you entered are not match";
-                return View("ChangePassword");
-            }
             UserDal dal = new UserDal();
 
             User usr = new User();

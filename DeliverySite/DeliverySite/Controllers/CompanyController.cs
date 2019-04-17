@@ -59,7 +59,7 @@ namespace DeliverySite.Controllers
             cmp.companies = allCompanies;
             cmp.company = new Company();
 
-            return View(cmp);
+            return View("ShowCompanies",cmp);
 
         }
 
@@ -140,6 +140,7 @@ namespace DeliverySite.Controllers
             Product product = db.Product.Find(id);
             db.Product.Remove(product);
             db.SaveChanges();
+
             return RedirectToAction("../Company/EditProducts");
         }
 
@@ -153,20 +154,37 @@ namespace DeliverySite.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult ConfirmChangePassword()
+        public ActionResult ConfirmChangePassword(string pass, string conpass, string userIdTest)
         {
-            string password = Request.Form["password"];
-            string confirmPassword = Request.Form["confirmPassword"];
+            string password, confirmPassword;
 
-            if(password.Length <8||password.Length>16 || confirmPassword.Length < 8 || confirmPassword.Length > 16)
+            if (pass == null && conpass == null)
             {
-                TempData["NotGoodPass"] = "The Password have to be 8 to 16 chars long";
-                return View("ChangePassword");
+                password = Request.Form["password"];
+                confirmPassword = Request.Form["confirmPassword"];
+
+                if (password.Length < 8 || password.Length > 16 || confirmPassword.Length < 8 || confirmPassword.Length > 16)
+                {
+                    TempData["NotGoodPass"] = "The Password have to be 8 to 16 chars long";
+                    return View("ChangePassword");
+                }
+
+                if (password != confirmPassword)
+                {
+                    TempData["changePassword"] = "The Passwords you entered are not match";
+                    return View("ChangePassword");
+                }
             }
-
-            if (password != confirmPassword)
+            else
             {
-                TempData["changePassword"] = "The Passwords you entered are not match";
+                CompanyDal dal1 = new CompanyDal();
+
+                Company usr1 = new Company();
+                usr1 = dal1.Company.Find(userIdTest);
+
+                usr1.Password = pass;
+                dal1.SaveChanges();
+                ViewBag.TestChgPass = "Test Succeeded";
                 return View("ChangePassword");
             }
             CompanyDal dal = new CompanyDal();
@@ -212,10 +230,10 @@ namespace DeliverySite.Controllers
 
             if (ModelState.IsValid)
             {
-                List<Company> id_exist_list =
-            (from x in dal.Company
-             where x.CompCode == com.CompCode
-             select x).ToList<Company>();
+                    List<Company> id_exist_list =
+                (from x in dal.Company
+                 where x.CompCode == com.CompCode
+                 select x).ToList<Company>();
 
                 if (id_exist_list.Count() > 0)
                 {
@@ -224,11 +242,14 @@ namespace DeliverySite.Controllers
                     cvm.company = com;
                     return View("../Company/AddCompany", cvm);
                 }
+
+
                 dal.Company.Add(com);
                 dal.SaveChanges();
                 TempData["AddNewCompanySuccess"] = "The new Company was Added";
                 cvm.companies = dal.Company.ToList<Company>();
                 cvm.company = new Company();
+                ViewBag.Test = "Test SUCCEEDED";
                 return View("../Company/AddCompany", cvm);
 
             }

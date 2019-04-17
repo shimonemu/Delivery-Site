@@ -115,20 +115,39 @@ namespace DeliverySite.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult ConfirmChangePassword()
+        public ActionResult ConfirmChangePassword(string pass, string conpass, string managerIdTest)
         {
-            string password = Request.Form["password"];
-            string confirmPassword = Request.Form["confirmPassword"];
+            string password, confirmPassword;
 
-            if (password.Length < 8 || password.Length > 16 || confirmPassword.Length < 8 || confirmPassword.Length > 16)
+            if (pass == null && conpass == null)
             {
-                TempData["NotGoodPass"] = "The Password have to be 8 to 16 chars long";
-                return View("ChangePassword");
+
+                password = Request.Form["password"];
+                confirmPassword = Request.Form["confirmPassword"];
+
+                if (password.Length < 8 || password.Length > 16 || confirmPassword.Length < 8 || confirmPassword.Length > 16)
+                {
+                    TempData["NotGoodPass"] = "The Password have to be 8 to 16 chars long";
+                    return View("ChangePassword");
+                }
+
+                if (password != confirmPassword)
+                {
+                    TempData["changePassword"] = "The passwords you entered are not match";
+                    return View("ChangePassword");
+                }
             }
 
-            if (password != confirmPassword)
+            else
             {
-                TempData["changePassword"] = "The passwords you entered are not match";
+                ManagerDal dal1 = new ManagerDal();
+
+                Manager usr1 = new Manager();
+                usr1 = dal1.Manager.Find(managerIdTest);
+
+                usr1.Password = pass;
+                dal1.SaveChanges();
+                ViewBag.TestChgPass = "Test Succeeded";
                 return View("ChangePassword");
             }
             ManagerDal dal = new ManagerDal();
