@@ -60,31 +60,16 @@
 
     <form method="post" action="../User/AddOrderToDb">
 
-        @Html.DropDownListFor(m => m.product.PrdId, new SelectList(Model.products, "PrdId", "PrdName"), "Please choose your medicine", new { name = "Name", id = "PrdId" })
+        @Html.DropDownListFor(m => m.product.PrdId, new SelectList(Model.products, "PrdId", "PrdName"), "Please choose your medicine", new { name = "Name", id = "PrdId", @class="btn btn-secondary dropdown-toggle" })
 
         <br />
         <br />
-
-        @*@Html.DropDownListFor(m => m.doctor.Id, new SelectList(Model.doctors, "Id", "FirstName"), "Please choose your doctor", new { name = "Name" })*@
-
-        @*<div>
-                <label class="loginFormElement">User Name:</label>
-                <input class="form-control" id="UserName" name="UserName" readonly="readonly" value=@Session["UserName"]>
-            </div>*@
 
         <div>
             <label class="loginFormElement">ID:</label>
             <input class="form-control" id="ID" name="ID" readonly="readonly" placeholder=@Model.user.Id value=@Model.user.Id>
         </div>
 
-        @*<div>
-                <label class="loginFormElement">Doctor:</label>
-                <input class="form-control" id="DocId" name="DocId">
-            </div>
-            <div>
-                <label class="loginFormElement">Medicine ID</label>
-                <input class="form-control" id="MedicineId" name="MedicineId">
-            </div>*@
         <br />
         <br />
         <input type="submit" name="login" class="login login-submit" value="Send Request">
