@@ -47,7 +47,7 @@ namespace DeliverySite.Controllers
             if (Session["UserName"] != null)
             {
                 ViewBag.UserName = Session["UserName"];
-                return RedirectToAction("DoctorWindow", "Doctor", new { username = Session["UserName"].ToString() });
+                return RedirectToAction("ManagerWindow", "Manager", new { username = Session["UserName"].ToString() });
             }
             else
             {

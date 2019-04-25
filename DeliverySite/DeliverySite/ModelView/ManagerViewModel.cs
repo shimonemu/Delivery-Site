@@ -6,7 +6,7 @@ using System.Web;
 
 namespace DeliverySite.ModelView
 {
-    public class DoctorViewModel
+    public class ManagerViewModel
     {
         public Manager manager { get; set; }
         public List<Manager> managers { get; set; }

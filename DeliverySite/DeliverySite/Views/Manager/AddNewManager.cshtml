@@ -1,0 +1,149 @@
+﻿@model DeliverySite.ModelView.ManagerViewModel
+@using DeliverySite.Models;
+
+@{
+    ViewBag.Title = "AddNewManager";
+    Layout = "~/Views/Shared/_LayoutManagers.cshtml";
+}
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+    body {
+        background: #E6E6FA;
+    }
+
+    #text {
+        color: white;
+    }
+
+    /*table {
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }*/
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+    }
+
+    /*table#t01 tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    table#t01 tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    table#t01 th {
+        background-color: black;
+        color: white;
+    }
+
+    .headLine {
+        color: deepskyblue;
+        font-size:130%;
+        font-weight:bold;
+    }*/
+
+
+    .centered-form {
+        margin-top: 60px;
+    }
+
+        .centered-form .panel {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+            
+        }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+</head>
+<body lang="en">
+    <div>
+        <div class="container">
+            <div class="row centered-form">
+                <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Add new manager </h3>
+                        </div>
+                        <div class="panel-body">
+                            <form @*role="form"*@ action="../Manager/AddManagerToDB" method="post">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="FirstName" id="FirstName" class="form-control input-sm" placeholder="First Name" value="@Model.manager.FirstName">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="LastName" id="LastName" class="form-control input-sm" placeholder="Last Name" value="@Model.manager.LastName">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="UserName" id="UserName" class="form-control input-sm" placeholder="User name" value="@Model.manager.UserName">
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="Id" id="Id" class="form-control input-sm" placeholder="ID" value="@Model.manager.Id">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" name="Password" id="Password" class="form-control input-sm" placeholder="Password" value="@Model.manager.Password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Register" class="btn btn-info btn-block">
+                                @Html.ValidationSummary()
+                                @TempData["AddNewManagerSuccess"]
+                                @TempData["AddNewManagerFailure"]
+                                @TempData["existMng"]
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        @*@Html.Partial("PartialShowDoctors", Model)*@
+
+        <h4 style="color:blue">Current Managers:</h4>
+        <br />
+        <table id="t01">
+            <tr class="headLine">
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>ID</td>
+                <td>User Name</td>
+            </tr>
+            @foreach (Manager obj in Model.managers)
+            {
+                <tr>
+                    <td>@obj.FirstName</td>
+                    <td>@obj.LastName</td>
+                    <td>@obj.Id</td>
+                    <td>@obj.UserName</td>
+
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

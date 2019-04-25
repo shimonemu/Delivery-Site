@@ -27,6 +27,58 @@ namespace DeliverySite.Controllers
             return View("ManagerLogin",mng);
         }
 
+        public ActionResult AddNewManager()
+        {
+            ManagerDal dal = new ManagerDal();
+            List<Manager> allManagers = dal.Manager.ToList<Manager>();
+            ManagerViewModel cvm = new ManagerViewModel();
+            cvm.manager = new Manager();
+            cvm.managers = allManagers;
+            return View(cvm);
+        }
+
+        public ActionResult AddManagerToDB(Manager doc)
+        {
+            ManagerViewModel cvm = new ManagerViewModel();
+            Manager obj = new Manager();
+
+            obj.FirstName = doc.FirstName;
+            obj.LastName = doc.LastName;
+            obj.Id = doc.Id;
+            obj.Password = doc.Password;
+            obj.UserName = doc.UserName;
+
+            ManagerDal dal = new ManagerDal();
+
+            if (ModelState.IsValid)
+            {
+                ManagerViewModel doc2 = new ManagerViewModel();
+
+                if (dal.Manager.Find(obj.Id)!=null)
+                {
+                    TempData["existMng"] = "The given Id is already exist";
+                    cvm.managers = dal.Manager.ToList<Manager>();
+                    cvm.manager = doc;
+                    return View("../Manager/AddNewManager", cvm);
+                }
+                dal.Manager.Add(doc);
+                dal.SaveChanges();
+                TempData["AddNewManagerSuccess"] = "The new Manager was Added";
+                cvm.managers = dal.Manager.ToList<Manager>();
+                cvm.manager = new Manager();
+                return View("AddNewManager", cvm);
+
+            }
+            else
+            {
+                cvm.manager = obj;
+            }
+
+            cvm.managers = dal.Manager.ToList<Manager>();
+            TempData["AddNewManagerFailure"] = "The new Manager was not added";
+            return View("AddNewManager", cvm);
+        }
+
         public ActionResult CheckLogin(Manager mng)
         {
             ManagerDal dal = new ManagerDal();
