@@ -19,6 +19,38 @@ namespace DeliverySite.Controllers
         {
             return View();
         }
+        public ActionResult ReOrder(int OrderNum)
+        {
+            OrderDal orderDal = new OrderDal();
+            Order order = new Order();
+            OrderViewModel ordViewModel = new OrderViewModel();
+            List<Order> allUserOrders;
+
+            order = orderDal.Order.Find(OrderNum);
+            orderDal.Order.Add(order);
+            orderDal.SaveChanges();
+
+            allUserOrders =
+                (from x in orderDal.Order
+                 where x.UserId == StaticUser.Id
+                 select x).ToList<Order>();
+            ordViewModel.order = order;
+            ordViewModel.orders = allUserOrders;
+            return View("ShowOrders", ordViewModel);
+        }
+
+        public ActionResult ShowOrders()
+        {
+            OrderDal orderDal = new OrderDal();
+            List<Order> allUserOrders =
+                (from x in orderDal.Order
+                 where x.UserId == StaticUser.Id
+                 select x).ToList<Order>();
+            OrderViewModel ordViewModel = new OrderViewModel();
+            ordViewModel.orders = allUserOrders;
+            ordViewModel.order = new Order();
+            return View(ordViewModel);
+        }
 
         public ActionResult SignUp(User usr)
         {
