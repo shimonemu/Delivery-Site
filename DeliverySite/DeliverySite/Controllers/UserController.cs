@@ -12,7 +12,7 @@ namespace DeliverySite.Controllers
 {
     public class UserController : Controller
     {
-
+        public static User StaticUser;
         public static string userId;
         // GET: User
         public ActionResult Index()
@@ -58,6 +58,57 @@ namespace DeliverySite.Controllers
             return View("../Home/SignUp", usr);
         }
 
+        public ActionResult MakeOrder()
+        {
+            ProductDal dal = new ProductDal();
+            ProductViewModel viewModel = new ProductViewModel();
+            List<Product> allProducts =
+                (from x in dal.Product
+                 select x).ToList<Product>();
+
+            viewModel.user = StaticUser;
+            viewModel.products = allProducts;
+            viewModel.product = new Product();
+            return View(viewModel);
+        }
+
+        public ActionResult AddOrderToDb(ProductViewModel viewModel)
+        {
+            ProductViewModel prdViewModel = new ProductViewModel();
+
+            string id = Request.Form["ID"];
+            Order ord = new Order();
+            ProductDal dal = new ProductDal();
+            OrderDal orderDal = new OrderDal();
+            Product prd=new Product();
+            UserDal userDal = new UserDal();
+            User usr = new User();
+            
+            prd=dal.Product.Find(viewModel.product.PrdId);
+            usr = userDal.User.Find(id);
+
+            ord.CompanyCode = prd.CompCode;
+            ord.ProductId = prd.PrdId;
+            ord.ProductName = prd.PrdName;
+            ord.UserFirstName = usr.FirstName;
+            ord.UserLastName = usr.LastName;
+            ord.UserId = id;
+
+            orderDal.Order.Add(ord);
+            orderDal.SaveChanges();
+            TempData["SuccessPurchase"] = "Your Purchase was added to the DB";
+
+
+            List<Product> allProducts =
+                (from x in dal.Product
+                 select x).ToList<Product>();
+
+            prdViewModel.products = allProducts;
+            prdViewModel.product = new Product();
+            prdViewModel.user = StaticUser;
+
+            return View("MakeOrder", prdViewModel);
+        }
         public ActionResult Login()
         {
             User usr = new User();
@@ -80,6 +131,7 @@ namespace DeliverySite.Controllers
                 userId = usrList[0].Id;
                 Session["UserLoggedIn"] = usr.UserName;
                 Session["UserName"] = usr.UserName;
+                StaticUser = usrList[0];
                 return View("../Home/Index");
             }
         }

@@ -35,6 +35,7 @@ namespace DeliverySite.Controllers
             Session["UserLoggedIn"] = null;
             Session["CompanyLoggedIn"] = null;
             Session["UserId"] = null;
+            
 
             return View("Index");
         }
