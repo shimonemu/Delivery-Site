@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,6 +15,7 @@ namespace DeliverySite.Controllers
     public class CompanyController : Controller
     {
         public static string companyCode;
+        public static Company staticCompnay;
         // GET: Company
         public ActionResult Index()
         {
@@ -27,6 +29,50 @@ namespace DeliverySite.Controllers
             return View("CompanyLogin", cmp);
         }
 
+        public ActionResult ContactManager()
+        {
+            ManagerDal managerDal = new ManagerDal();
+            List<Manager> allManagers = managerDal.Manager.ToList<Manager>();
+            ManagerViewModel mngViewModel = new ManagerViewModel();
+            mngViewModel.managers = allManagers;
+            mngViewModel.manager = new Manager();
+            mngViewModel.company = staticCompnay;
+            return View(mngViewModel);
+        }
+
+        public ActionResult SendMail(ManagerViewModel mngView)
+        {
+            ManagerDal mngDal = new ManagerDal();
+            Manager mng = mngDal.Manager.Find(mngView.manager.Id);
+
+            List<Manager> allManagers = mngDal.Manager.ToList<Manager>();
+            ManagerViewModel mngViewModel = new ManagerViewModel();
+            mngViewModel.managers = allManagers;
+            mngViewModel.manager = new Manager();
+            mngViewModel.company = staticCompnay;
+
+            if (mng == null)
+            {
+                TempData["errorFindTheManager"] = "The Chosen Manager Was Not Found";
+                return View("ContactManager", mngViewModel);
+            }
+            string subject = Request.Form["reason"];
+            string text = Request.Form["textarea"];
+
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            mail.From = new MailAddress("kfir2037@gmail.com");
+            mail.To.Add(mng.Mail);
+            mail.Subject = subject;
+            mail.Body = text;
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("kfir2037", "0542666134");
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
+
+            TempData["mailSent"] = "Your mail was sent. The manager will be in touch";
+            return View("ContactManager", mngViewModel);
+        }
         public ActionResult CheckLogin(Company cmp)
         {
             CompanyDal dal = new CompanyDal();
@@ -43,6 +89,7 @@ namespace DeliverySite.Controllers
                 Session["CompanyLoggedIn"] = cmpList[0].CompName;
                 Session["UserName"] = cmpList[0].CompName;
                 Session["CompCode"] = cmpList[0].CompCode;
+                staticCompnay = cmpList[0];
                 return View("../Home/Index");
             }
         }

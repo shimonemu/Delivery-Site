@@ -10,5 +10,7 @@ namespace DeliverySite.ModelView
     {
         public Manager manager { get; set; }
         public List<Manager> managers { get; set; }
+
+        public Company company { get; set; }
     }
 }

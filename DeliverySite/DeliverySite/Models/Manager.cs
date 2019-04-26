@@ -27,5 +27,7 @@ namespace DeliverySite.Models
         [RegularExpression("^[a-zA-Z0-9]{8,16}$", ErrorMessage = "Password must contain between 8 to 16 chars or numbers")]
         public string Password { get; set; }
 
+        [Required]
+        public string Mail { get; set; }
     }
 }

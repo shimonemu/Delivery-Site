@@ -1,11 +1,15 @@
-﻿@model DeliverySite.ModelView.ProductViewModel
+﻿@model DeliverySite.ModelView.ManagerViewModel
+
 @{
-    ViewBag.Title = "MakeOrder";
-    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
+    ViewBag.Title = "ContactManager";
+    Layout = "~/Views/Shared/_LayoutCompanies.cshtml";
 
 }
 
-<h2>MakeOrder</h2>
+
+
+
+<h2>ContactManager</h2>
 
 <script src="~/Scripts/jquery-1.7.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
@@ -59,27 +63,40 @@
 </head>
 <body>
 
-    <form method="post" action="../User/AddOrderToDb">
+    <form method="post" action="../Company/SendMail">
 
-        @Html.DropDownListFor(m => m.product.PrdId, new SelectList(Model.products, "PrdId", "PrdName"), "Please choose your medicine", new { name = "Name", id = "PrdId", @class= "btn btn-default dropdown-toggle" })
+        @Html.DropDownListFor(m => m.manager.Id, new SelectList(Model.managers, "Id", "FirstName"), "Please Choose The Manager", new { name = "Name", id = "Id", @class = "btn btn-default dropdown-toggle" })
 
         <br />
         <br />
 
         <div>
-            <label class="loginFormElement">ID:</label>
-            <input class="form-control" id="ID" name="ID" readonly="readonly" placeholder=@Model.user.Id value=@Model.user.Id>
+            <label class="loginFormElement">Company Code:</label>
+            <input class="form-control" id="ID" name="ID" readonly="readonly" placeholder=@Model.company.CompCode value=@Model.company.CompCode>
         </div>
 
         <br />
         <br />
+
+        <div>
+            <label class="loginFormElement">Reason For Referral :</label>
+            <input type="text" class="form-control" id="reason" name="reason">
+        </div>
+        <br />
+        <br />
+        <div>
+            <label class="loginFormElement">Referral Details:</label><br />
+            <textarea rows="5" cols="50" id="textarea" name="textarea">
+            </textarea>
+        </div>
+        <br />
+
         <input type="submit" name="login" class="login login-submit" value="Send Request">
     </form>
 
 
-    @TempData["Order"]
-    @TempData["SuccessPurchase"]
-
+    @TempData["mailSent"]
+    @TempData["errorFindTheManager"]
     @*@Html.ValidationSummary()*@
 
 </body>
