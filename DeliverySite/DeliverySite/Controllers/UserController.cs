@@ -19,14 +19,25 @@ namespace DeliverySite.Controllers
         {
             return View();
         }
-        public ActionResult ReOrder(int OrderNum)
+
+        protected override void Dispose(bool disposing)
+        {
+            UserDal db = new UserDal();
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        public ActionResult ReOrder(int id)
         {
             OrderDal orderDal = new OrderDal();
             Order order = new Order();
             OrderViewModel ordViewModel = new OrderViewModel();
             List<Order> allUserOrders;
 
-            order = orderDal.Order.Find(OrderNum);
+            order = orderDal.Order.Find(id);
             orderDal.Order.Add(order);
             orderDal.SaveChanges();
 
@@ -184,6 +195,7 @@ namespace DeliverySite.Controllers
             
         }
 
+
         public ActionResult UserWindow()
         {
             return View();
@@ -228,15 +240,7 @@ namespace DeliverySite.Controllers
             return RedirectToAction("../User/ShowUsers");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            UserDal db = new UserDal();
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+
         public ActionResult ChangePassword()
         {
             return View();

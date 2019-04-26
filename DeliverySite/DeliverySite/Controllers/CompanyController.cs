@@ -60,7 +60,6 @@ namespace DeliverySite.Controllers
             cmp.company = new Company();
 
             return View("ShowCompanies",cmp);
-
         }
 
         public ActionResult CompanyWindow()
