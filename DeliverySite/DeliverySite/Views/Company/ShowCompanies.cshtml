@@ -97,9 +97,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CompCode)
             </td>
-            
             <td>
-                @Html.ActionLink("Contact", "../User/ContactCompany", new { id = item.CompCode }) |
+                @Html.ActionLink("Contact", "../User/ContactCompany", new { id = item.CompCode })
             </td>
         </tr>
     }

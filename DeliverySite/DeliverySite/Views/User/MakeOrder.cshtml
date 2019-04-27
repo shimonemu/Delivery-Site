@@ -61,7 +61,7 @@
 
     <form method="post" action="../User/AddOrderToDb">
 
-        @Html.DropDownListFor(m => m.product.PrdId, new SelectList(Model.products, "PrdId", "PrdName"), "Please choose your medicine", new { name = "Name", id = "PrdId", @class= "btn btn-default dropdown-toggle" })
+        @Html.DropDownListFor(m => m.product.PrdId, new SelectList(Model.products, "PrdId", "PrdName"), "Please choose your product", new { name = "Name", id = "PrdId", @class= "btn btn-default dropdown-toggle" })
 
         <br />
         <br />

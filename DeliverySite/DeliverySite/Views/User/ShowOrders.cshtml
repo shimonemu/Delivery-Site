@@ -1,12 +1,12 @@
 ﻿@model DeliverySite.ModelView.OrderViewModel
 
 @{
-    ViewBag.Title = "ShowOrders";
+    ViewBag.Title = "Show Orders";
     Layout = "~/Views/Shared/_LayoutUsers.cshtml";
     
 }
 
-<h2>ShowOrders</h2>
+<h2>My Last Orders:</h2>
 
 <table class="table">
     <tr>
@@ -14,19 +14,19 @@
             @Html.DisplayNameFor(model => model.order.OrderNum)
         </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.order.ProductName)
+            Product Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.order.ProductId)
+            Product ID
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.order.UserFirstName)
+            First Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.order.UserLastName)
+            Last Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.order.UserId)
+            ID
         </th>
 
         <th></th>
@@ -60,5 +60,5 @@
 </table>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Menu", "UserWindow")
 </div>
