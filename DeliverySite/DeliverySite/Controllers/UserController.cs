@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -28,6 +29,40 @@ namespace DeliverySite.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult ContactCompany(string id)
+        {
+            CompanyDal compDal = new CompanyDal();
+            Company comp = compDal.Company.Find(id);
+
+            return View(comp);
+        }
+
+        public ActionResult SendMail()
+        {
+            string compCode = Request.Form["ID"];
+            string subject = Request.Form["reason"];
+            string text = Request.Form["textarea"];
+
+            CompanyDal compDal = new CompanyDal();
+            Company comp = compDal.Company.Find(compCode);
+            
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            mail.From = new MailAddress("kfir2037@gmail.com");
+            mail.To.Add(comp.Mail);
+            mail.Subject = subject;
+            mail.Body = text;
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("kfir2037", "0542666134");
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
+
+            TempData["mailSent"] = "Your mail was sent. The Company will be in touch";
+
+            
+            return View("ContactCompany", comp);
         }
 
         public ActionResult ReOrder(int id)

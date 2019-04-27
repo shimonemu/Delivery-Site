@@ -13,7 +13,7 @@ namespace DeliverySite.Controllers
     public class ManagerController : Controller
     {
         public static string managerId;
-
+        public static Manager staticManager;
         // GET: Manager
         public ActionResult Index()
         {
@@ -47,6 +47,7 @@ namespace DeliverySite.Controllers
             obj.Id = doc.Id;
             obj.Password = doc.Password;
             obj.UserName = doc.UserName;
+            obj.Mail = doc.Mail;
 
             ManagerDal dal = new ManagerDal();
 
@@ -79,6 +80,15 @@ namespace DeliverySite.Controllers
             return View("AddNewManager", cvm);
         }
 
+        public ActionResult ShowOrders()
+        {
+            OrderDal dal = new OrderDal();
+            List<Order> allOrders = dal.Order.ToList<Order>();
+            OrderViewModel ordView = new OrderViewModel();
+            ordView.orders = allOrders;
+            ordView.order = new Order();
+            return View(ordView);
+        }
         public ActionResult CheckLogin(Manager mng)
         {
             ManagerDal dal = new ManagerDal();
@@ -95,6 +105,7 @@ namespace DeliverySite.Controllers
                 managerId = mngList[0].Id;
                 Session["ManagerLoggedIn"] = mng.UserName;
                 Session["UserName"] = mng.UserName;
+                staticManager = mngList[0];
                 return View("../Home/Index");
             }
         }

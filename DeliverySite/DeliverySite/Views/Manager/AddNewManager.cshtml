@@ -109,6 +109,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="Mail" id="Mail" class="form-control input-sm" placeholder="Mail" value="@Model.manager.Mail">
+                                    </div>
+                                </div>
                                 <input type="submit" value="Register" class="btn btn-info btn-block">
                                 @Html.ValidationSummary()
                                 @TempData["AddNewManagerSuccess"]
@@ -132,16 +137,19 @@
                 <td>Last Name</td>
                 <td>ID</td>
                 <td>User Name</td>
+                <td>Mail</td>
+
             </tr>
             @foreach (Manager obj in Model.managers)
             {
-                <tr>
-                    <td>@obj.FirstName</td>
-                    <td>@obj.LastName</td>
-                    <td>@obj.Id</td>
-                    <td>@obj.UserName</td>
+            <tr>
+                <td>@obj.FirstName</td>
+                <td>@obj.LastName</td>
+                <td>@obj.Id</td>
+                <td>@obj.UserName</td>
+                <td>@obj.Mail</td>
 
-                </tr>
+            </tr>
             }
         </table>
     </div>

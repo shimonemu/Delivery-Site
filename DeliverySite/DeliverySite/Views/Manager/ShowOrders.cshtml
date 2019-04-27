@@ -1,0 +1,61 @@
+﻿@model DeliverySite.ModelView.OrderViewModel
+
+@{
+    ViewBag.Title = "ShowOrders";
+    Layout = "~/Views/Shared/_LayoutManagers.cshtml";
+
+}
+
+<h2>ShowOrders</h2>
+
+<table class="table">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.order.OrderNum)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.order.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.order.ProductId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.order.UserFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.order.UserLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.order.UserId)
+        </th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model.orders)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.OrderNum)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+        </tr>
+    }
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "ShowOrders")
+</div>
