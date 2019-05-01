@@ -53,7 +53,7 @@
 <body id="test1">
     <div class="container body-content">
         @*<a href="../Manager/AddNewManager">
-                <div class="options" id="option1">option one</div>
+                    <div class="options" id="option1">option one</div>
             </a>*@
         <a href="../User/AddReview">
             <div class="options" id="option2">option two</div>
@@ -65,15 +65,15 @@
             <div class="options" id="option4">Show Products</div>
         </a>
         <a href="../User/ShowOrders">
-            <div class="options" id="option5">Show Products</div>
+            <div class="options" id="option5">Show Orders</div>
         </a>
     </div>
+    <button style="float:right" type="button" onclick="changeFont()">Change Font!</button>
+
     <script>
-        var myVal = '@Session["BigFont"]';
-        if (myVal != null) {
+        function changeFont() {
             document.getElementById("test1").style.fontSize = "150%";
             document.getElementById("test1").style.fontWeight = "900";
-
         }
     </script>
 </body>

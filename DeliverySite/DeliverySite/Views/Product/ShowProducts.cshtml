@@ -117,9 +117,10 @@
 
     </table>
 
+    <button style="float:right" type="button" onclick="changeFont()">Change Font!</button>
+
     <script>
-        var myVal = '@Session["BigFont"]';
-        if (myVal != null) {
+        function changeFont() {
             document.getElementById("test1").style.fontSize = "150%";
             document.getElementById("test1").style.fontWeight = "900";
             document.getElementById("table").style.fontSize = "200%";
