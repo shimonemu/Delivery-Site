@@ -62,55 +62,70 @@
     }
 </style>
 
-<form class="search" action="SearchProducts" method="post">
-    <div>
-        
-        
-        <div class="col search">
-            <input type="text" class="form-control" placeholder="Search by Product" name="PrdName" value="@Model.product.PrdName">
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body id="test1">
+    <form class="search" action="SearchProducts" method="post">
+        <div>
+            <div class="col search">
+                <input type="text" class="form-control" placeholder="Search by Product" name="PrdName" value="@Model.product.PrdName">
+            </div>
+            <div class="col search">
+                <input type="text" class="form-control" placeholder="Search by Company Code" name="CompCode" value="@Model.product.CompCode">
+            </div>
         </div>
-        <div class="col search">
-            <input type="text" class="form-control" placeholder="Search by Company Code" name="CompCode" value="@Model.product.CompCode">
-        </div>
-    </div>
-    <button class="btn btn-primary btn-block" type="submit" style="margin-top:10px;">Search</button>
-</form>
+        <button class="btn btn-primary btn-block" type="submit" style="margin-top:10px;">Search</button>
+    </form>
 
-
-
-<table class="table">
-    <tr>
-        <th>
-            Product ID
-        </th>
-        <th>
-            Product Name
-        </th>
-        <th>
-            Price
-        </th>
-        <th>
-            Company Code
-        </th>
-
-    </tr>
-
-    @foreach (var item in Model.products)
-    {
+    <table id="table" class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrdId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrdName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompCode)
-            </td>
-        </tr>
-    }
+            <th>
+                Product ID
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Company Code
+            </th>
 
-</table>
+        </tr>
+
+        @foreach (var item in Model.products)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrdId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrdName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompCode)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <script>
+        var myVal = '@Session["BigFont"]';
+        if (myVal != null) {
+            document.getElementById("test1").style.fontSize = "150%";
+            document.getElementById("test1").style.fontWeight = "900";
+            document.getElementById("table").style.fontSize = "200%";
+            document.getElementById("table").style.fontWeight = "900";
+        }
+    </script>
+</body>
+</html>
+

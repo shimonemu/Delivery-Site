@@ -98,26 +98,3 @@
         </tr>
     }
 </table>
-@*<table id="t01">
-        <tr class="headLine">
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td>ID</td>
-            <td>User Name</td>
-        </tr>
-        @foreach (Patient obj in Model.patients)
-        {
-            <tr>
-                <td>@obj.FirstName</td>
-                <td>@obj.LastName</td>
-                <td>@obj.Id</td>
-                <td>@obj.UserName</td>
-
-            </tr>
-        }
-    </table>*@
-
-@*@{
-        WebGrid obj = new WebGrid(Model.patients);
-    }
-    @obj.GetHtml()*@

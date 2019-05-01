@@ -50,11 +50,11 @@
     <title>User Window</title>
 </head>
 
-<body>
+<body id="test1">
     <div class="container body-content">
         @*<a href="../Manager/AddNewManager">
-            <div class="options" id="option1">option one</div>
-        </a>*@
+                <div class="options" id="option1">option one</div>
+            </a>*@
         <a href="../User/AddReview">
             <div class="options" id="option2">option two</div>
         </a>
@@ -68,6 +68,13 @@
             <div class="options" id="option5">Show Products</div>
         </a>
     </div>
-    <script></script>
+    <script>
+        var myVal = '@Session["BigFont"]';
+        if (myVal != null) {
+            document.getElementById("test1").style.fontSize = "150%";
+            document.getElementById("test1").style.fontWeight = "900";
+
+        }
+    </script>
 </body>
 </html>

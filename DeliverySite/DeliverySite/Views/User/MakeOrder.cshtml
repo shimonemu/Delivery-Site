@@ -57,11 +57,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body id="test1">
 
     <form method="post" action="../User/AddOrderToDb">
 
-        @Html.DropDownListFor(m => m.product.PrdId, new SelectList(Model.products, "PrdId", "PrdName"), "Please choose your product", new { name = "Name", id = "PrdId", @class= "btn btn-default dropdown-toggle" })
+        @Html.DropDownListFor(m => m.product.PrdId, new SelectList(Model.products, "PrdId", "PrdName"), "Please choose your product", new { name = "Name", id = "PrdId", @class = "btn btn-default dropdown-toggle" })
 
         <br />
         <br />
@@ -80,7 +80,13 @@
     @TempData["Order"]
     @TempData["SuccessPurchase"]
 
-    @*@Html.ValidationSummary()*@
+    <script>
+        var myVal = '@Session["BigFont"]';
+        if (myVal != null) {
+            document.getElementById("test1").style.fontSize = "200%";
+            document.getElementById("test1").style.fontWeight = "900";
+        }
+    </script>
 
 </body>
 

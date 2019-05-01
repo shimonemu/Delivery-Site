@@ -8,57 +8,76 @@
 
 <h2>My Last Orders:</h2>
 
-<table class="table">
-    <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.order.OrderNum)
-        </th>*@
-        <th>
-            Product Name
-        </th>
-        <th>
-            Product ID
-        </th>
-        <th>
-            First Name
-        </th>
-        <th>
-            Last Name
-        </th>
-        <th>
-            ID
-        </th>
+<!DOCTYPE html>
+<html>
+<head>
 
-        <th></th>
-    </tr>
-    @foreach (var item in Model.orders)
-    {
-    <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.OrderNum)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserFirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserLastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.ActionLink("Re-Order", "ReOrder", new { id = item.OrderNum })
-        </td>
-    </tr>
-    }
-</table>
+</head>
+<body id="test1">
+    <table id="table" class="table">
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.order.OrderNum)
+                </th>*@
+            <th>
+                Product Name
+            </th>
+            <th>
+                Product ID
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                ID
+            </th>
 
-<div>
-    @Html.ActionLink("Back to Menu", "UserWindow")
-</div>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.orders)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.OrderNum)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.ActionLink("Re-Order", "ReOrder", new { id = item.OrderNum })
+                </td>
+            </tr>
+        }
+    </table>
+
+    <div>
+        @Html.ActionLink("Back to Menu", "UserWindow")
+    </div>
+
+    <script>
+        var myVal = '@Session["BigFont"]';
+        if (myVal != null) {
+            document.getElementById("test1").style.fontSize = "150%";
+            document.getElementById("test1").style.fontWeight = "900";
+            document.getElementById("table").style.fontSize = "200%";
+            document.getElementById("table").style.fontWeight = "900";
+        }
+    </script>
+</body>
+</html>
+

@@ -205,15 +205,20 @@ namespace DeliverySite.Controllers
             if (usrList.Count() == 0)
             {
                 ViewBag.WarningMessage = "Login Failed.";
-                
                 return View("Login", usr);
             }
             else
-            {
+            {   
+
                 userId = usrList[0].Id;
                 Session["UserLoggedIn"] = usr.UserName;
                 Session["UserName"] = usr.UserName;
                 StaticUser = usrList[0];
+                var bigFont = Request.Form["bigFont"];
+                if (bigFont != null)
+                {
+                    Session["BigFont"] = "BigFont";
+                }
                 return View("../Home/Index");
             }
         }

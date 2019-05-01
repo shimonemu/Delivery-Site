@@ -58,48 +58,49 @@
         border-collapse: collapse;
     }
 </style>
-@*<form class="search" action="SearchPatients" method="post">
-        <div>
-            <div class="col search">
-                <input type="text" class="form-control" placeholder="Search by id" name="Id" value="@Model.patient.Id">
-                @<button class="btn btn-primary" submit" style="margin-top:10px;">Search</button>@
-            </div>
-            <div class="col search">
-                <input type="text" class="form-control" placeholder="Search by User Name" name="UserName" value="@Model.patient.UserName">
-            </div>
-            <div class="col search">
-                <input type="text" class="form-control" placeholder="Search by First Name" name="FirstName" value="@Model.patient.FirstName">
-            </div>
-            <div class="col search">
-                <input type="text" class="form-control" placeholder="Search by Last Name" name="LastName" value="@Model.patient.LastName">
-            </div>
-        </div>
-        <button class="btn btn-primary btn-block" type="submit" style="margin-top:10px;">Search</button>
-    </form>
-    @TempData["error_search"]*@
 
-<table class="table">
-    <tr>
-        <th>
-            Company
-        </th>
-        <th>
-           Code
-        </th>
-    
-    </tr>
-    @foreach (var item in Model.companies)
-    {
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body id="test1">
+    <table id="table" class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompCode)
-            </td>
-            <td>
-                @Html.ActionLink("Contact", "../User/ContactCompany", new { id = item.CompCode })
-            </td>
+            <th>
+                Company
+            </th>
+            <th>
+                Code
+            </th>
+            
         </tr>
-    }
-</table>
+        @foreach (var item in Model.companies)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompCode)
+                </td>
+                <td>
+                    @Html.ActionLink("Contact", "../User/ContactCompany", new { id = item.CompCode })
+                </td>
+            </tr>
+        }
+    </table>
+
+    <script>
+        var myVal = '@Session["BigFont"]';
+        if (myVal != null) {
+            document.getElementById("test1").style.fontSize = "150%";
+            document.getElementById("test1").style.fontWeight = "900";
+            document.getElementById("table").style.fontSize = "200%";
+            document.getElementById("table").style.fontWeight = "900";
+        }
+    </script>
+</body>
+</html>
+
+
