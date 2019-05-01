@@ -6,11 +6,17 @@ using System.Web;
 
 namespace DeliverySite.Models
 {
-    public class Order
+    public class Review
     {
         [Key]
         [Required]
+        public int ReviewNum { get; set; }
+        [Required]
         public int OrderNum { get; set; }
+        //[Required]
+        //public bool Good_Bad { get; set; }
+        [Required]
+        public string Details { get; set; }
         [Required]
         public string UserId { get; set; }
         [Required]
@@ -18,12 +24,6 @@ namespace DeliverySite.Models
         [Required]
         public string UserLastName { get; set; }
         [Required]
-        public string ProductId { get; set; }
-        [Required]
-        public string ProductName { get; set; }
-        [Required]
-        public string CompanyCode { get; set; }
-        public string Date { get; set; }
-
+        public string UserName { get; set; }
     }
 }

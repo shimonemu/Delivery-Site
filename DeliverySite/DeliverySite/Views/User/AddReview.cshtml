@@ -1,0 +1,93 @@
+﻿@model DeliverySite.ModelView.ReviewViewModel
+
+@{
+    ViewBag.Title = "AddReview";
+}
+
+<h2>AddReview</h2>
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<style>
+    body {
+        background: #E6E6FA;
+        padding-top: 54px;
+        color: black;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Create two unequal columns that floats next to each other */
+    .column {
+        float: left;
+        padding: 10px;
+        height: 120px; /* Should be removed. Only for demonstration */
+    }
+
+    .left {
+        width: 120px;
+    }
+
+    .right {
+        width: 120px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <form method="post" action="../User/AddReviewToDb">
+
+        @Html.DropDownListFor(m => m.order.OrderNum, new SelectList(Model.orders, "OrderNum", "OrderNum"), "Please choose your Order for Review", new { name = "Name", id = "OrderNum", @class = "btn btn-default dropdown-toggle" })
+
+        <br />
+        <br />
+
+        <div>
+            <label class="loginFormElement">User ID:</label>
+            <input class="form-control" id="ID" name="ID" readonly="readonly" placeholder=@Model.user.Id value=@Model.user.Id>
+        </div>
+        @*<div>
+            <label class="loginFormElement">Its good or bad Review:</label>
+            <input class="form-control" id="ID" name="ID" readonly="readonly" placeholder=@Model.user.Id value=@Model.user.Id>
+        </div>*@
+        <div class="form-group">
+            <label class="loginformelement">Review:</label>
+            <textarea class="form-control" rows="5" id="Review" name="Review" placeholder="Write you Review"></textarea>
+            </div>
+            <br />
+            <br />
+            <input type="submit" name="login" class="login login-submit" value="Send Request">
+    </form>
+
+
+    @TempData["Order"]
+    @TempData["SuccessPurchase"]
+
+    @*@Html.ValidationSummary()*@
+
+</body>
+
+</html>

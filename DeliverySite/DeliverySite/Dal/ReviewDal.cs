@@ -7,13 +7,14 @@ using System.Web;
 
 namespace DeliverySite.Dal
 {
-    public class CompanyDal:DbContext
+    public class ReviewDal: DbContext
     {
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Company>().ToTable("Companies");
+            modelBuilder.Entity<Review>().ToTable("Reviews");
         }
-        public DbSet<Company> Company { get; set; }
+        public DbSet<Review> Review { get; set; }
+
     }
 }

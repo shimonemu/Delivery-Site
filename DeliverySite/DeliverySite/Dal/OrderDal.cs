@@ -11,7 +11,7 @@ namespace DeliverySite.Dal
     {
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+           base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Order>().ToTable("Orders");
         }
         public DbSet<Order> Order { get; set; }

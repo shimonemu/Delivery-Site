@@ -171,6 +171,10 @@ namespace DeliverySite.Controllers
             ord.UserFirstName = usr.FirstName;
             ord.UserLastName = usr.LastName;
             ord.UserId = id;
+            ord.Date = DateTime.Today.ToShortDateString();
+
+            //DateTime today = DateTime.Today;
+            //DateTime sevenDaysEarlier = today.AddDays(-32);
 
             orderDal.Order.Add(ord);
             orderDal.SaveChanges();
@@ -275,6 +279,40 @@ namespace DeliverySite.Controllers
             return RedirectToAction("../User/ShowUsers");
         }
 
+        public ActionResult AddReviewToDb(ReviewViewModel RevViewModel)
+        {
+            Review review = new Review();
+            ReviewDal reviewDal = new ReviewDal();
+            review.Details = Request.Form["Review"];
+            review.OrderNum = RevViewModel.order.OrderNum;
+            review.UserId = Request.Form["ID"];
+            UserDal userDal = new UserDal();
+            User user = new User();
+            user = userDal.User.Find(userId);
+            review.UserFirstName = user.FirstName;
+            review.UserLastName = user.LastName;
+            review.UserName = user.UserName;
+
+            reviewDal.Review.Add(review);
+            reviewDal.SaveChanges();
+            return View("UserWindow");
+        }
+
+        public ActionResult AddReview()
+        {
+            OrderDal orderDal = new OrderDal();
+            List<Order> UserOrders =
+                (from x in orderDal.Order
+                 where x.UserId == StaticUser.Id
+                 select x).ToList<Order>();
+
+            ReviewViewModel revView = new ReviewViewModel();
+            revView.orders = UserOrders;
+            revView.user = StaticUser;
+            revView.order = new Order();
+
+            return View(revView);
+        }
 
         public ActionResult ChangePassword()
         {
