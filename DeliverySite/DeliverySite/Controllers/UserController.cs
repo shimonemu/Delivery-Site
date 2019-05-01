@@ -292,11 +292,15 @@ namespace DeliverySite.Controllers
             review.OrderNum = RevViewModel.order.OrderNum;
             review.UserId = Request.Form["ID"];
             UserDal userDal = new UserDal();
+            OrderDal orderDal = new OrderDal();
+            Order ord = new Order();
+            ord=orderDal.Order.Find(RevViewModel.order.OrderNum);
             User user = new User();
             user = userDal.User.Find(userId);
             review.UserFirstName = user.FirstName;
             review.UserLastName = user.LastName;
             review.UserName = user.UserName;
+            review.CompCode = ord.CompanyCode;
 
             reviewDal.Review.Add(review);
             reviewDal.SaveChanges();

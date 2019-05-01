@@ -11,5 +11,7 @@ namespace DeliverySite.ModelView
         public Order order { get; set; }
         public List<Order> orders { get; set; }
         public User user { get; set; }
+        public List<Review> reviews { get; set; }
+
     }
 }

@@ -22,6 +22,19 @@ namespace DeliverySite.Controllers
             return View();
         }
 
+        public ActionResult ViewReviews()
+        {
+            ReviewDal reviewDal = new ReviewDal();
+            ReviewViewModel revView = new ReviewViewModel();
+            List<Review> companies =
+                (from x in reviewDal.Review
+                 where x.CompCode == staticCompnay.CompCode
+                 select x).ToList<Review>();
+
+            revView.reviews = companies;
+      
+            return View(revView);
+        }
 
         public ActionResult Login()
         {
