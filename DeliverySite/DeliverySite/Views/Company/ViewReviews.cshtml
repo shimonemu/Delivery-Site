@@ -1,0 +1,105 @@
+﻿@model DeliverySite.ModelView.ReviewViewModel
+
+@{
+    ViewBag.Title = "ViewReview";
+}
+
+<h2>ViewReview</h2>
+
+<style>
+    body {
+        background: white;
+    }
+
+    .search {
+        float: left;
+        margin: 20px;
+    }
+
+    table#t01 th {
+        background-color: black;
+        color: white;
+    }
+
+    .headLine {
+        color: white;
+        font-size: 130%;
+        font-weight: bold;
+    }
+
+    table#t01 tr:nth-child(even) {
+        background-color: white;
+    }
+
+    table#t01 tr:nth-child(odd) {
+        background-color: white;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<body>
+    <table id="table" class="table">
+        <tr>
+            <th>
+                Review Number
+            </th>
+            <th>
+                Order Number
+            </th>
+            <th>
+                Details
+            </th>
+            <th>
+                User First Name
+            </th>
+            <th>
+                User Last Name
+            </th>
+            <th>
+                UserName
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model.reviews)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+        </tr>
+        }
+
+    </table>
+</body>
+
+</html>

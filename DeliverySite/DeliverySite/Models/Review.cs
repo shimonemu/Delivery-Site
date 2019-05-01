@@ -25,5 +25,7 @@ namespace DeliverySite.Models
         public string UserLastName { get; set; }
         [Required]
         public string UserName { get; set; }
+        [Required]
+        public string CompCode { get; set; }
     }
 }
