@@ -171,7 +171,7 @@ namespace DeliverySite.Controllers
             ord.UserFirstName = usr.FirstName;
             ord.UserLastName = usr.LastName;
             ord.UserId = id;
-            ord.Date = DateTime.Today.ToShortDateString();
+            ord.Date = DateTime.Today.Date;
 
             //DateTime today = DateTime.Today;
             //DateTime sevenDaysEarlier = today.AddDays(-32);

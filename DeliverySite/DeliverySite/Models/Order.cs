@@ -11,19 +11,30 @@ namespace DeliverySite.Models
         [Key]
         [Required]
         public int OrderNum { get; set; }
+
         [Required]
         public string UserId { get; set; }
+
         [Required]
         public string UserFirstName { get; set; }
+
         [Required]
         public string UserLastName { get; set; }
+
         [Required]
         public string ProductId { get; set; }
+
         [Required]
         public string ProductName { get; set; }
+
         [Required]
         public string CompanyCode { get; set; }
-        public string Date { get; set; }
+
+        [Required]
+        [Display(Name = "Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Date { get; set; }
 
     }
 }
