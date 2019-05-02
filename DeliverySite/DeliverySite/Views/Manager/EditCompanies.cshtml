@@ -60,17 +60,19 @@
 
     @foreach (var item in Model.companies)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompName)
-            </td>
-            <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.CompCode })
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompName)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.CompCode }) |
+            @Html.ActionLink("Orders", "OrdersNumber", new { id = item.CompCode })
+
+        </td>
+    </tr>
     }
 
 </table>

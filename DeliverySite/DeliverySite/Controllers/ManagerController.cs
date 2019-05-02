@@ -27,6 +27,17 @@ namespace DeliverySite.Controllers
             return View("ManagerLogin",mng);
         }
 
+        public ActionResult OrdersNumber(string id)
+        {
+            OrderDal orderDal = new OrderDal();
+            List<Order> companyOrders =
+                (from x in orderDal.Order
+                 where x.CompanyCode == id
+                 select x).ToList<Order>();
+            OrderViewModel orderView = new OrderViewModel();
+            orderView.orders = companyOrders;
+            return View(orderView);
+        }
         public ActionResult AddNewManager()
         {
             ManagerDal dal = new ManagerDal();
@@ -116,9 +127,6 @@ namespace DeliverySite.Controllers
         {
             return View();
         }
-
-
-
 
         public ActionResult ChangePassword()
         {            
