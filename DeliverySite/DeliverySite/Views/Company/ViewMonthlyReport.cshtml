@@ -1,0 +1,124 @@
+﻿@model DeliverySite.ModelView.ReviewViewModel
+
+@{
+    ViewBag.Title = "ViewMonthlyReport";
+    Layout = "~/Views/Shared/_LayoutCompanies.cshtml";
+
+}
+
+<h2>ViewMonthlyReport</h2>
+
+<style>
+
+    body {
+        background: #E6E6FA;
+    }
+
+    .search {
+        float: left;
+        margin: 20px;
+    }
+
+    table#t01 th {
+        background-color: black;
+        color: white;
+    }
+
+    .headLine {
+        color: deepskyblue;
+        font-size: 130%;
+        font-weight: bold;
+    }
+
+    table#t01 tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    table#t01 tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body id="test1">
+    <table id="table" class="table">
+        <tr>
+            @*<th>
+                        @Html.DisplayNameFor(model => model.order.OrderNum)
+                </th>*@
+            <th>
+                Product Name
+            </th>
+            <th>
+                Product ID
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                ID
+            </th>
+
+            <th>
+                Date
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+        @foreach (var item in Model.orders)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+            </tr>
+        }
+    </table>
+
+    Total Orders: @Model.orders.Count();
+    <br>
+    Total Income: @Model.orders.Sum(i => i.price);
+    <br>
+
+    <div>
+        @Html.ActionLink("Back to Menu", "CompanyWindow")
+    </div>
+
+
+</body>
+</html>

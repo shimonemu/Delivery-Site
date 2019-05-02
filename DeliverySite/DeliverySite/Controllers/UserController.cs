@@ -171,6 +171,7 @@ namespace DeliverySite.Controllers
             ord.UserFirstName = usr.FirstName;
             ord.UserLastName = usr.LastName;
             ord.UserId = id;
+            ord.price = prd.price;
             ord.Date = DateTime.Today.Date;
 
             //DateTime today = DateTime.Today;

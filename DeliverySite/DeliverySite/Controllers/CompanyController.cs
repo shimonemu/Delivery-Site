@@ -54,6 +54,26 @@ namespace DeliverySite.Controllers
             return View(mngViewModel);
         }
 
+        public ActionResult ViewMonthlyReport()
+        {
+            OrderDal orderDal = new OrderDal();
+            DateTime before30days = new DateTime();
+            before30days = DateTime.Today.AddDays(-30);
+
+            List<Order> last30DaysOrder =
+                 (from x in orderDal.Order
+                  where x.Date > before30days && x.Date <= DateTime.Today.Date && x.CompanyCode==staticCompnay.CompCode
+                  select x).ToList<Order>();
+
+            //List<Order> last30DaysOrder2 =
+            //    (from x in orderDal.Order
+            //     where ((DateTime.Compare(x.Date, before30days.Date) > 0) && (DateTime.Compare(x.Date, DateTime.Today.Date) < 0))||DateTime.Compare(x.Date, DateTime.Today.Date)==0
+            //     select x).ToList<Order>();
+
+            ReviewViewModel revModel = new ReviewViewModel();
+            revModel.orders = last30DaysOrder;
+            return View(revModel);
+        }
         public ActionResult SendMail(ManagerViewModel mngView)
         {
             ManagerDal mngDal = new ManagerDal();
