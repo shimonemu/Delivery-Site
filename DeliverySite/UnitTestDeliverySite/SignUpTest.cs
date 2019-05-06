@@ -60,6 +60,7 @@ namespace UnitTestDeliverySite
             cmp.CompCode = "777777";
             cmp.CompName = "TestCompany";
             cmp.Password = "123456test";
+            cmp.Mail = "aaa@gmail.com";
 
             ViewResult result = controller.AddCompanyToDB(cmp) as ViewResult;
 
@@ -76,18 +77,7 @@ namespace UnitTestDeliverySite
             Assert.AreEqual("Test Succeeded", result.ViewBag.TestChgPass);
         }
 
-        [TestMethod]
-        public void DeleteCompanyTest()
-        {
-            ManagerController controller = new ManagerController();
-
-            //Act
-            var result = controller.DeleteConfirmed("777777") as RedirectToRouteResult;
-
-            //Assert
-            Assert.AreEqual("../Manager/EditCompanies", result.RouteValues["Action"]);
-        }
-
+        
 
 
         [TestMethod]
@@ -119,14 +109,6 @@ namespace UnitTestDeliverySite
 
             Assert.AreEqual("ShowCompanies", result.ViewName);
         }
-
-
-
-
-
-
-
-
 
     }
 }

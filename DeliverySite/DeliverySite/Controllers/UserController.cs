@@ -39,30 +39,61 @@ namespace DeliverySite.Controllers
             return View(comp);
         }
 
-        public ActionResult SendMail()
+        public ActionResult SendMail(string cc,string sub,string txt)
         {
-            string compCode = Request.Form["ID"];
-            string subject = Request.Form["reason"];
-            string text = Request.Form["textarea"];
+            //For Tests
+            if (cc == null && sub == null && txt == null)
+            {
+                string compCode = Request.Form["ID"];
+                string subject = Request.Form["reason"];
+                string text = Request.Form["textarea"];
 
-            CompanyDal compDal = new CompanyDal();
-            Company comp = compDal.Company.Find(compCode);
-            
-            MailMessage mail = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("kfir2037@gmail.com");
-            mail.To.Add(comp.Mail);
-            mail.Subject = subject;
-            mail.Body = text;
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("kfir2037", "0542666134");
-            SmtpServer.EnableSsl = true;
-            SmtpServer.Send(mail);
+                CompanyDal compDal = new CompanyDal();
+                Company comp = compDal.Company.Find(compCode);
 
-            TempData["mailSent"] = "Your mail was sent. The Company will be in touch";
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("kfir2037@gmail.com");
+                mail.To.Add(comp.Mail);
+                mail.Subject = subject;
+                mail.Body = text;
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("kfir2037", "0542666134");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
 
-            
-            return View("ContactCompany", comp);
+                TempData["mailSent"] = "Your mail was sent. The Company will be in touch";
+                ViewBag.Test = "test SUCCEDED";
+
+
+                return View("ContactCompany", comp);
+            }
+            else
+            {
+                string compCode = cc;
+                string subject =sub;
+                string text = txt;
+
+                CompanyDal compDal = new CompanyDal();
+                Company comp = compDal.Company.Find(compCode);
+
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("kfir2037@gmail.com");
+                mail.To.Add(comp.Mail);
+                mail.Subject = subject;
+                mail.Body = text;
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("kfir2037", "0542666134");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
+
+                TempData["mailSent"] = "Your mail was sent. The Company will be in touch";
+                ViewBag.Test = "test SUCCEDED";
+
+
+                return View("ContactCompany", comp);
+            }
         }
 
         public ActionResult ReOrder(int id)

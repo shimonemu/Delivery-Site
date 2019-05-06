@@ -78,6 +78,7 @@ namespace DeliverySite.Controllers
                 TempData["AddNewManagerSuccess"] = "The new Manager was Added";
                 cvm.managers = dal.Manager.ToList<Manager>();
                 cvm.manager = new Manager();
+                ViewBag.Test = "Test SUCCEEDED";
                 return View("AddNewManager", cvm);
 
             }
