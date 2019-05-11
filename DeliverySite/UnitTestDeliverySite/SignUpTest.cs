@@ -23,6 +23,8 @@ namespace UnitTestDeliverySite
 
             ViewResult result = controller.SignUp(usr) as ViewResult;
 
+            //ViewResult result2 = controller.CheckLogin(usr) as ViewResult;
+
             Assert.AreEqual("TEST SUCCEEDED", result.ViewBag.Test);
             
         }
@@ -35,20 +37,6 @@ namespace UnitTestDeliverySite
             var result = controller.ConfirmChangePassword("test55555", "test55555", "204688764") as ViewResult;
 
             Assert.AreEqual("Test Succeeded", result.ViewBag.TestChgPass);
-        }
-
-        [TestMethod]
-        public void DeleteUserTest()
-        {
-
-            UserController controller = new UserController();
-
-            //Act
-            var result = controller.DeleteConfirmed("204688764") as RedirectToRouteResult;
-            
-            //Assert
-            Assert.AreEqual("../User/ShowUsers", result.RouteValues["Action"]);
-
         }
 
         [TestMethod]
@@ -68,6 +56,24 @@ namespace UnitTestDeliverySite
         }
 
         [TestMethod]
+        public void AddProductTest()
+        {
+            //Arrange
+            ProductController controller = new ProductController();
+
+            //Act
+            Product prd = new Product();
+            prd.PrdId = "9999";
+            prd.PrdName = "TestProduct";
+            prd.price = 100;
+            prd.CompCode = "777777";
+            ViewResult result = controller.AddProductToDB(prd) as ViewResult;
+
+            //Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
         public void ChangePasswordCompany()
         {
             CompanyController controller = new CompanyController();
@@ -76,8 +82,6 @@ namespace UnitTestDeliverySite
 
             Assert.AreEqual("Test Succeeded", result.ViewBag.TestChgPass);
         }
-
-        
 
 
         [TestMethod]

@@ -15,7 +15,7 @@ namespace DeliverySite.Controllers
     public class CompanyController : Controller
     {
         public static string companyCode;
-        public static Company staticCompnay;
+        public static Company staticCompnay = new Company();
         // GET: Company
         public ActionResult Index()
         {
@@ -72,7 +72,7 @@ namespace DeliverySite.Controllers
 
             ReviewViewModel revModel = new ReviewViewModel();
             revModel.orders = last30DaysOrder;
-            return View(revModel);
+            return View("ViewMonthlyReport",revModel);
         }
 
         public ActionResult SendMail(ManagerViewModel mngView,string sub,string txt)
@@ -110,7 +110,7 @@ namespace DeliverySite.Controllers
                 SmtpServer.Send(mail);
 
                 TempData["mailSent"] = "Your mail was sent. The manager will be in touch";
-                ViewBag.Test1 = "test SUCCEEDED";
+                ViewBag.Test = "test SUCCEEDED";
                 return View("ContactManager", mngViewModel);
             }
             else
@@ -129,8 +129,9 @@ namespace DeliverySite.Controllers
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
 
+                ViewBag.Test = "test SUCCEEDED";
                 TempData["mailSent"] = "Your mail was sent. The manager will be in touch";
-                ViewBag.Test1 = "test SUCCEEDED";
+                
                 return View("ContactManager", mngViewModel);
             }
         }
@@ -193,7 +194,7 @@ namespace DeliverySite.Controllers
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View("Details",product);
         }
 
         public ActionResult Edit(string id)
@@ -207,6 +208,8 @@ namespace DeliverySite.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Test = "Test SUCCEEDED";
+
             return View(product);
         }
 

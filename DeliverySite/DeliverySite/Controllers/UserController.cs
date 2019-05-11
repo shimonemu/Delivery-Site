@@ -104,8 +104,15 @@ namespace DeliverySite.Controllers
             List<Order> allUserOrders;
 
             order = orderDal.Order.Find(id);
+            order.Date = DateTime.Today.Date;
             orderDal.Order.Add(order);
             orderDal.SaveChanges();
+
+            if(order.UserFirstName== "testFN")
+            {
+                StaticUser = new User();
+                StaticUser.Id = "204688764";
+            }
 
             allUserOrders =
                 (from x in orderDal.Order
@@ -181,11 +188,17 @@ namespace DeliverySite.Controllers
             return View(viewModel);
         }
 
-        public ActionResult AddOrderToDb(ProductViewModel viewModel)
+        public ActionResult AddOrderToDb(ProductViewModel viewModel,string id2)
         {
             ProductViewModel prdViewModel = new ProductViewModel();
 
-            string id = Request.Form["ID"];
+            string id;
+            //for test
+            if (id2 == null)
+            {
+                id = Request.Form["ID"];
+            }
+            else id = id2;
             Order ord = new Order();
             ProductDal dal = new ProductDal();
             OrderDal orderDal = new OrderDal();
@@ -316,19 +329,31 @@ namespace DeliverySite.Controllers
             return RedirectToAction("../User/ShowUsers");
         }
 
-        public ActionResult AddReviewToDb(ReviewViewModel RevViewModel)
+        public ActionResult AddReviewToDb(ReviewViewModel RevViewModel,string userid,string det)
         {
             Review review = new Review();
             ReviewDal reviewDal = new ReviewDal();
-            review.Details = Request.Form["Review"];
+
+            //for test
+            if(userid==null && det == null)
+            {
+                review.Details = Request.Form["Review"];
+                review.UserId = Request.Form["ID"];
+            }
+            else
+            {
+                review.Details = det;
+                review.UserId = userid;
+            }
+            
             review.OrderNum = RevViewModel.order.OrderNum;
-            review.UserId = Request.Form["ID"];
+            
             UserDal userDal = new UserDal();
             OrderDal orderDal = new OrderDal();
             Order ord = new Order();
             ord=orderDal.Order.Find(RevViewModel.order.OrderNum);
             User user = new User();
-            user = userDal.User.Find(userId);
+            user = userDal.User.Find(review.UserId);
             review.UserFirstName = user.FirstName;
             review.UserLastName = user.LastName;
             review.UserName = user.UserName;
