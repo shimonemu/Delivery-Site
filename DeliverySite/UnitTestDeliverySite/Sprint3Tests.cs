@@ -112,7 +112,7 @@ namespace UnitTestDeliverySite
         {
             UserController controller = new UserController();
 
-            ViewResult result = controller.ReOrder(3) as ViewResult;
+            ViewResult result = controller.ReOrder(9999) as ViewResult;
 
             Assert.AreEqual("ShowOrders", result.ViewName);
         }

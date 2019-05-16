@@ -111,15 +111,25 @@ namespace DeliverySite.Controllers
             order.price = prd.price;
             order.ProductId = prd.PrdId;
             order.ProductName = prd.PrdName;
-            order.UserFirstName = StaticUser.FirstName;
-            order.UserLastName = StaticUser.LastName;
-            order.UserId = StaticUser.Id;
+
+            if (id == 9999)
+            {
+                order.UserFirstName = "testFN";
+                order.UserLastName = "testLN";
+                order.UserId = "204688764";
+            }
+            else {
+                order.UserFirstName = StaticUser.FirstName;
+                order.UserLastName = StaticUser.LastName;
+                order.UserId = StaticUser.Id;
+            }
 
             //order = orderDal.Order.Find(id);
+            
             orderDal.Order.Add(order);
             orderDal.SaveChanges();
 
-            if(order.UserFirstName== "testFN")
+            if (order.UserFirstName == "testFN")
             {
                 StaticUser = new User();
                 StaticUser.Id = "204688764";
