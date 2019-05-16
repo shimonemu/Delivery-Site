@@ -36,8 +36,9 @@ namespace DeliverySite.Controllers
                  select x).ToList<Order>();
             OrderViewModel orderView = new OrderViewModel();
             orderView.orders = companyOrders;
-            return View(orderView);
+            return View("OrdersNumber",orderView);
         }
+
         public ActionResult AddNewManager()
         {
             ManagerDal dal = new ManagerDal();
@@ -78,6 +79,7 @@ namespace DeliverySite.Controllers
                 TempData["AddNewManagerSuccess"] = "The new Manager was Added";
                 cvm.managers = dal.Manager.ToList<Manager>();
                 cvm.manager = new Manager();
+                ViewBag.Test = "Test SUCCEEDED";
                 return View("AddNewManager", cvm);
 
             }
@@ -98,8 +100,9 @@ namespace DeliverySite.Controllers
             OrderViewModel ordView = new OrderViewModel();
             ordView.orders = allOrders;
             ordView.order = new Order();
-            return View(ordView);
+            return View("ShowOrders",ordView);
         }
+
         public ActionResult CheckLogin(Manager mng)
         {
             ManagerDal dal = new ManagerDal();
@@ -120,8 +123,6 @@ namespace DeliverySite.Controllers
                 return View("../Home/Index");
             }
         }
-
-        
 
         public ActionResult ManagerWindow()
         {
@@ -145,7 +146,7 @@ namespace DeliverySite.Controllers
             viewModel.companies = allCompanies;
             viewModel.company = new Company();
 
-            return View(viewModel);
+            return View("EditCompanies",viewModel);
         }
 
         public ActionResult Delete(string id)

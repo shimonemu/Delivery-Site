@@ -133,7 +133,9 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Dal\CompanyDal.cs" />
     <Compile Include="Dal\ManagerDal.cs" />
+    <Compile Include="Dal\OrderDal.cs" />
     <Compile Include="Dal\ProductDal.cs" />
+    <Compile Include="Dal\ReviewDal.cs" />
     <Compile Include="Dal\UserDal.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -145,10 +147,15 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Manager.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="ModelView\CompanyViewModel.cs" />
+    <Compile Include="ModelView\ManagerViewModel.cs" />
+    <Compile Include="ModelView\OrderViewModel.cs" />
     <Compile Include="ModelView\ProductViewModel.cs" />
+    <Compile Include="ModelView\ReviewViewModel.cs" />
     <Compile Include="ModelView\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1008,6 +1015,13 @@
     <Content Include="Views\Manager\Delete.cshtml" />
     <Content Include="Views\Manager\EditCompanies.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\User\MakeOrder.cshtml" />
+    <Content Include="Views\Company\ContactManager.cshtml" />
+    <Content Include="Views\Manager\AddNewManager.cshtml" />
+    <Content Include="Views\Manager\ShowOrders.cshtml" />
+    <Content Include="Views\User\ContactCompany.cshtml" />
+    <Content Include="Views\User\ShowOrders.cshtml" />
+    <Content Include="Views\User\AddReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

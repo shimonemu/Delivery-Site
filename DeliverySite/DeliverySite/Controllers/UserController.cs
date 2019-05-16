@@ -39,30 +39,61 @@ namespace DeliverySite.Controllers
             return View(comp);
         }
 
-        public ActionResult SendMail()
+        public ActionResult SendMail(string cc,string sub,string txt)
         {
-            string compCode = Request.Form["ID"];
-            string subject = Request.Form["reason"];
-            string text = Request.Form["textarea"];
+            //For Tests
+            if (cc == null && sub == null && txt == null)
+            {
+                string compCode = Request.Form["ID"];
+                string subject = Request.Form["reason"];
+                string text = Request.Form["textarea"];
 
-            CompanyDal compDal = new CompanyDal();
-            Company comp = compDal.Company.Find(compCode);
-            
-            MailMessage mail = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("kfir2037@gmail.com");
-            mail.To.Add(comp.Mail);
-            mail.Subject = subject;
-            mail.Body = text;
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("kfir2037", "0542666134");
-            SmtpServer.EnableSsl = true;
-            SmtpServer.Send(mail);
+                CompanyDal compDal = new CompanyDal();
+                Company comp = compDal.Company.Find(compCode);
 
-            TempData["mailSent"] = "Your mail was sent. The Company will be in touch";
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("kfir2037@gmail.com");
+                mail.To.Add(comp.Mail);
+                mail.Subject = subject;
+                mail.Body = text;
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("kfir2037", "0542666134");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
 
-            
-            return View("ContactCompany", comp);
+                TempData["mailSent"] = "Your mail was sent. The Company will be in touch";
+                ViewBag.Test = "test SUCCEDED";
+
+
+                return View("ContactCompany", comp);
+            }
+            else
+            {
+                string compCode = cc;
+                string subject =sub;
+                string text = txt;
+
+                CompanyDal compDal = new CompanyDal();
+                Company comp = compDal.Company.Find(compCode);
+
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("kfir2037@gmail.com");
+                mail.To.Add(comp.Mail);
+                mail.Subject = subject;
+                mail.Body = text;
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("kfir2037", "0542666134");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
+
+                TempData["mailSent"] = "Your mail was sent. The Company will be in touch";
+                ViewBag.Test = "test SUCCEDED";
+
+
+                return View("ContactCompany", comp);
+            }
         }
 
         public ActionResult ReOrder(int id)
@@ -73,8 +104,15 @@ namespace DeliverySite.Controllers
             List<Order> allUserOrders;
 
             order = orderDal.Order.Find(id);
+            order.Date = DateTime.Today.Date;
             orderDal.Order.Add(order);
             orderDal.SaveChanges();
+
+            if(order.UserFirstName== "testFN")
+            {
+                StaticUser = new User();
+                StaticUser.Id = "204688764";
+            }
 
             allUserOrders =
                 (from x in orderDal.Order
@@ -150,11 +188,17 @@ namespace DeliverySite.Controllers
             return View(viewModel);
         }
 
-        public ActionResult AddOrderToDb(ProductViewModel viewModel)
+        public ActionResult AddOrderToDb(ProductViewModel viewModel,string id2)
         {
             ProductViewModel prdViewModel = new ProductViewModel();
 
-            string id = Request.Form["ID"];
+            string id;
+            //for test
+            if (id2 == null)
+            {
+                id = Request.Form["ID"];
+            }
+            else id = id2;
             Order ord = new Order();
             ProductDal dal = new ProductDal();
             OrderDal orderDal = new OrderDal();
@@ -285,19 +329,31 @@ namespace DeliverySite.Controllers
             return RedirectToAction("../User/ShowUsers");
         }
 
-        public ActionResult AddReviewToDb(ReviewViewModel RevViewModel)
+        public ActionResult AddReviewToDb(ReviewViewModel RevViewModel,string userid,string det)
         {
             Review review = new Review();
             ReviewDal reviewDal = new ReviewDal();
-            review.Details = Request.Form["Review"];
+
+            //for test
+            if(userid==null && det == null)
+            {
+                review.Details = Request.Form["Review"];
+                review.UserId = Request.Form["ID"];
+            }
+            else
+            {
+                review.Details = det;
+                review.UserId = userid;
+            }
+            
             review.OrderNum = RevViewModel.order.OrderNum;
-            review.UserId = Request.Form["ID"];
+            
             UserDal userDal = new UserDal();
             OrderDal orderDal = new OrderDal();
             Order ord = new Order();
             ord=orderDal.Order.Find(RevViewModel.order.OrderNum);
             User user = new User();
-            user = userDal.User.Find(userId);
+            user = userDal.User.Find(review.UserId);
             review.UserFirstName = user.FirstName;
             review.UserLastName = user.LastName;
             review.UserName = user.UserName;

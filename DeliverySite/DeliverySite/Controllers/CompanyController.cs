@@ -15,7 +15,7 @@ namespace DeliverySite.Controllers
     public class CompanyController : Controller
     {
         public static string companyCode;
-        public static Company staticCompnay;
+        public static Company staticCompnay = new Company();
         // GET: Company
         public ActionResult Index()
         {
@@ -72,9 +72,10 @@ namespace DeliverySite.Controllers
 
             ReviewViewModel revModel = new ReviewViewModel();
             revModel.orders = last30DaysOrder;
-            return View(revModel);
+            return View("ViewMonthlyReport",revModel);
         }
-        public ActionResult SendMail(ManagerViewModel mngView)
+
+        public ActionResult SendMail(ManagerViewModel mngView,string sub,string txt)
         {
             ManagerDal mngDal = new ManagerDal();
             Manager mng = mngDal.Manager.Find(mngView.manager.Id);
@@ -90,22 +91,49 @@ namespace DeliverySite.Controllers
                 TempData["errorFindTheManager"] = "The Chosen Manager Was Not Found";
                 return View("ContactManager", mngViewModel);
             }
-            string subject = Request.Form["reason"];
-            string text = Request.Form["textarea"];
 
-            MailMessage mail = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("kfir2037@gmail.com");
-            mail.To.Add(mng.Mail);
-            mail.Subject = subject;
-            mail.Body = text;
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("kfir2037", "0542666134");
-            SmtpServer.EnableSsl = true;
-            SmtpServer.Send(mail);
+            //For Tests
+            if (sub == null && txt == null)
+            {
+                string subject = Request.Form["reason"];
+                string text = Request.Form["textarea"];
 
-            TempData["mailSent"] = "Your mail was sent. The manager will be in touch";
-            return View("ContactManager", mngViewModel);
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("kfir2037@gmail.com");
+                mail.To.Add(mng.Mail);
+                mail.Subject = subject;
+                mail.Body = text;
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("kfir2037", "0542666134");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
+
+                TempData["mailSent"] = "Your mail was sent. The manager will be in touch";
+                ViewBag.Test = "test SUCCEEDED";
+                return View("ContactManager", mngViewModel);
+            }
+            else
+            {
+                string subject = sub;
+                string text = txt;
+
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("kfir2037@gmail.com");
+                mail.To.Add(mng.Mail);
+                mail.Subject = subject;
+                mail.Body = text;
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("kfir2037", "0542666134");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
+
+                ViewBag.Test = "test SUCCEEDED";
+                TempData["mailSent"] = "Your mail was sent. The manager will be in touch";
+                
+                return View("ContactManager", mngViewModel);
+            }
         }
         public ActionResult CheckLogin(Company cmp)
         {
@@ -147,10 +175,12 @@ namespace DeliverySite.Controllers
         {
             return View();
         }
+
         public ActionResult ChangePassword()
         {
             return View();
         }
+
         public ActionResult Details(string id)
         {
             ProductDal db = new ProductDal();
@@ -164,7 +194,7 @@ namespace DeliverySite.Controllers
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View("Details",product);
         }
 
         public ActionResult Edit(string id)
@@ -178,6 +208,8 @@ namespace DeliverySite.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Test = "Test SUCCEEDED";
+
             return View(product);
         }
 

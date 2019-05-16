@@ -23,6 +23,8 @@ namespace UnitTestDeliverySite
 
             ViewResult result = controller.SignUp(usr) as ViewResult;
 
+            //ViewResult result2 = controller.CheckLogin(usr) as ViewResult;
+
             Assert.AreEqual("TEST SUCCEEDED", result.ViewBag.Test);
             
         }
@@ -38,20 +40,6 @@ namespace UnitTestDeliverySite
         }
 
         [TestMethod]
-        public void DeleteUserTest()
-        {
-
-            UserController controller = new UserController();
-
-            //Act
-            var result = controller.DeleteConfirmed("204688764") as RedirectToRouteResult;
-            
-            //Assert
-            Assert.AreEqual("../User/ShowUsers", result.RouteValues["Action"]);
-
-        }
-
-        [TestMethod]
         public void AddCompany()
         {
             CompanyController controller = new CompanyController();
@@ -60,10 +48,29 @@ namespace UnitTestDeliverySite
             cmp.CompCode = "777777";
             cmp.CompName = "TestCompany";
             cmp.Password = "123456test";
+            cmp.Mail = "aaa@gmail.com";
 
             ViewResult result = controller.AddCompanyToDB(cmp) as ViewResult;
 
             Assert.AreEqual("Test SUCCEEDED",result.ViewBag.Test);
+        }
+
+        [TestMethod]
+        public void AddProductTest()
+        {
+            //Arrange
+            ProductController controller = new ProductController();
+
+            //Act
+            Product prd = new Product();
+            prd.PrdId = "9999";
+            prd.PrdName = "TestProduct";
+            prd.price = 100;
+            prd.CompCode = "777777";
+            ViewResult result = controller.AddProductToDB(prd) as ViewResult;
+
+            //Assert
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
@@ -75,19 +82,6 @@ namespace UnitTestDeliverySite
 
             Assert.AreEqual("Test Succeeded", result.ViewBag.TestChgPass);
         }
-
-        [TestMethod]
-        public void DeleteCompanyTest()
-        {
-            ManagerController controller = new ManagerController();
-
-            //Act
-            var result = controller.DeleteConfirmed("777777") as RedirectToRouteResult;
-
-            //Assert
-            Assert.AreEqual("../Manager/EditCompanies", result.RouteValues["Action"]);
-        }
-
 
 
         [TestMethod]
@@ -119,14 +113,6 @@ namespace UnitTestDeliverySite
 
             Assert.AreEqual("ShowCompanies", result.ViewName);
         }
-
-
-
-
-
-
-
-
 
     }
 }
