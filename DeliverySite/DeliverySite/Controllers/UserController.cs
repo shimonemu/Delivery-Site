@@ -71,8 +71,19 @@ namespace DeliverySite.Controllers
             Order order = new Order();
             OrderViewModel ordViewModel = new OrderViewModel();
             List<Order> allUserOrders;
+            ProductDal prdDal = new ProductDal();
+            Product prd = new Product();
+            prd = prdDal.Product.Find(id.ToString());
 
-            order = orderDal.Order.Find(id);
+            order.CompanyCode = prd.CompCode;
+            order.price = prd.price;
+            order.ProductId = prd.PrdId;
+            order.ProductName = prd.PrdName;
+            order.UserId = StaticUser.Id;
+            order.UserLastName = StaticUser.LastName;
+            order.UserFirstName = StaticUser.FirstName;
+            order.Date= DateTime.Today.Date;
+            //order = orderDal.Order.Find(id);
             orderDal.Order.Add(order);
             orderDal.SaveChanges();
 
