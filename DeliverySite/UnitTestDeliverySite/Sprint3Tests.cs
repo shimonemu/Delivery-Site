@@ -32,43 +32,43 @@ namespace UnitTestDeliverySite
 
         }
 
-        //[TestMethod]
-        //public void ContactCompanyTest()
-        //{
-        //    UserController controller = new UserController();
+        [TestMethod]
+        public void ContactCompanyTest()
+        {
+            UserController controller = new UserController();
 
-        //    string cc = "777777";
-        //    string sub = "test";
-        //    string txt = "testetst test";
-
-
-        //    ViewResult result = controller.SendMail(cc,sub,txt) as ViewResult;
-
-        //    Assert.AreEqual("test SUCCEDED", result.ViewBag.Test);
-
-        //}
-
-        //[TestMethod]
-        //public void ContactManagerTest()
-        //{
-        //    CompanyController controller = new CompanyController();
-            
-        //    string sub = "test";
-        //    string txt = "testetst test";
-
-        //    ManagerDal managerDal = new ManagerDal();
-        //    List<Manager> allManagers = managerDal.Manager.ToList<Manager>();
-        //    ManagerViewModel mngViewModel = new ManagerViewModel();
-        //    mngViewModel.managers = allManagers;
-        //    mngViewModel.manager = new Manager();
-        //    mngViewModel.manager.Id = "999999999";
+            string cc = "777777";
+            string sub = "test";
+            string txt = "testetst test";
 
 
-        //    ViewResult result = controller.SendMail(mngViewModel, sub, txt) as ViewResult;
+            ViewResult result = controller.SendMail(cc, sub, txt) as ViewResult;
 
-        //    Assert.AreEqual("test SUCCEEDED", result.ViewBag.Test);
+            Assert.AreEqual("test SUCCEDED", result.ViewBag.Test);
 
-        //}
+        }
+
+        [TestMethod]
+        public void ContactManagerTest()
+        {
+            CompanyController controller = new CompanyController();
+
+            string sub = "test";
+            string txt = "testetst test";
+
+            ManagerDal managerDal = new ManagerDal();
+            List<Manager> allManagers = managerDal.Manager.ToList<Manager>();
+            ManagerViewModel mngViewModel = new ManagerViewModel();
+            mngViewModel.managers = allManagers;
+            mngViewModel.manager = new Manager();
+            mngViewModel.manager.Id = "999999999";
+
+
+            ViewResult result = controller.SendMail(mngViewModel, sub, txt) as ViewResult;
+
+            Assert.AreEqual("test SUCCEEDED", result.ViewBag.Test);
+
+        }
 
 
         [TestMethod]
