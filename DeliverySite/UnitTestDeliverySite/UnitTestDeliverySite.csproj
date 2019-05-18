@@ -89,6 +89,7 @@
     <Compile Include="ProductControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignUpTest.cs" />
+    <Compile Include="Sprint3Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeliverySite\DeliverySite.csproj">
