@@ -1,4 +1,3 @@
-C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\DeliverySite.dll.config
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\DeliverySite.dll
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\DeliverySite.pdb
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\roslyn\csc.exe
@@ -167,6 +166,13 @@ C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\ros
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\roslyn\System.Threading.Tasks.Extensions.dll
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\Newtonsoft.Json.pdb
-C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.csprojAssemblyReference.cache
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.Migrations.InitialCreate.resources
 C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.csproj.GenerateResource.cache
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\obj\Debug\DeliverySite.csprojAssemblyReference.cache
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\DeliverySite.dll.config
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\Dapplo.HttpExtensions.dll
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\Dapplo.HttpExtensions.JsonSimple.dll
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\Dapplo.Jenkins.dll
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\Dapplo.Log.dll
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\Dapplo.Jenkins.xml
+C:\Users\Shimon\Documents\GitHub\Delivery-Site\DeliverySite\DeliverySite\bin\Dapplo.Log.xml
