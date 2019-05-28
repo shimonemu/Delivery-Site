@@ -105,7 +105,17 @@ namespace DeliverySite.Controllers
             ProductDal prdDal = new ProductDal();
             Product prd = new Product();
             prd = prdDal.Product.Find(id.ToString());
-
+            if (prd == null)
+            {
+                allUserOrders =
+                (from x in orderDal.Order
+                 where x.UserId == StaticUser.Id
+                 select x).ToList<Order>();
+                ordViewModel.order = order;
+                ordViewModel.orders = allUserOrders;
+                TempData["prdnotex"] = "This product does not exist anymore.";
+                return View("ShowOrders", ordViewModel);
+            }
             order.CompanyCode = prd.CompCode;
             order.Date= DateTime.Today.Date; ;
             order.price = prd.price;
