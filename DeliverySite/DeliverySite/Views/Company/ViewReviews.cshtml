@@ -2,9 +2,11 @@
 
 @{
     ViewBag.Title = "ViewReview";
+    Layout = "~/Views/Shared/_LayoutCompanies.cshtml";
 }
 
-<h2>ViewReview</h2>
+<h2>@Session["UserName"]</h2>
+<h2>Reviews</h2>
 
 <style>
     body {
@@ -63,12 +65,12 @@
             <th>
                 Details
             </th>
-            <th>
+            @*<th>
                 User First Name
             </th>
             <th>
                 User Last Name
-            </th>
+            </th>*@
             <th>
                 UserName
             </th>
@@ -77,29 +79,32 @@
 
         @foreach (var item in Model.reviews)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReviewNum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderNum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Details)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserFirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReviewNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.UserFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserLastName)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+            </tr>
         }
 
     </table>
+    <div>
+        @Html.ActionLink("Back to Menu", "CompanyWindow")
+    </div>
 </body>
 
 </html>
