@@ -383,6 +383,22 @@ namespace DeliverySite.Controllers
             OrderDal orderDal = new OrderDal();
             Order ord = new Order();
             ord=orderDal.Order.Find(RevViewModel.order.OrderNum);
+
+            if (ord == null)
+            {
+                TempData["Error"] = "Something wrong with your review";
+                List<Order> UserOrders =
+                    (from x in orderDal.Order
+                     where x.UserId == StaticUser.Id
+                     select x).ToList<Order>();
+
+                ReviewViewModel revView = new ReviewViewModel();
+                revView.orders = UserOrders;
+                revView.user = StaticUser;
+                revView.order = new Order();
+
+                return View("AddReview",revView);
+            }
             User user = new User();
             user = userDal.User.Find(review.UserId);
             review.UserFirstName = user.FirstName;
