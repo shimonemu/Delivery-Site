@@ -85,13 +85,20 @@
     @TempData["Error"]
     @*@Html.ValidationSummary()*@
 
-    <button style="float:right" type="button" onclick="changeFont()">Change Font!</button>
+    <button style="float:right" type="button" onclick="changeFont()">A+</button>
+    <button style="float:right" type="button" onclick="smallerFont()">A-</button>
 
     <script>
         function changeFont() {
             document.getElementById("test1").style.fontSize = "150%";
             document.getElementById("test1").style.fontWeight = "900";
         }
+
+        function smallerFont() {
+            document.getElementById("test1").style.fontSize = "140%";
+            document.getElementById("test1").style.fontWeight = "500";
+        }
+
     </script>
 
 </body>

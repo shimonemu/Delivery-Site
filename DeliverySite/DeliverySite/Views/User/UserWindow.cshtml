@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutUsers.cshtml";
 }
 <h2>@Session["UserName"]</h2>
-<h2>User Window</h2>
+<h2>User Menu</h2>
 
 <style>
 
@@ -17,7 +17,7 @@
         width: 120px;
         height: 120px;
         border-style: groove;
-        background-color: aquamarine;
+        background-color: antiquewhite;
         margin-top: 50px;
         float: left;
         margin: 50px;
@@ -47,7 +47,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Window</title>
+    <title>User Menu</title>
 </head>
 
 <body id="test1">
@@ -68,12 +68,18 @@
             <div class="options" id="option5">Show Orders</div>
         </a>
     </div>
-    <button style="float:right" type="button" onclick="changeFont()">Change Font!</button>
-
+    <button style="float:right" type="button" onclick="changeFont()">A+</button>
+    <button style="float:right" type="button" onclick="smallerFont()">A-</button>
     <script>
         function changeFont() {
             document.getElementById("test1").style.fontSize = "150%";
             document.getElementById("test1").style.fontWeight = "900";
+
+        }
+
+        function smallerFont() {
+            document.getElementById("test1").style.fontSize = "140%";
+            document.getElementById("test1").style.fontWeight = "500";
         }
     </script>
 </body>
