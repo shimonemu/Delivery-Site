@@ -125,7 +125,7 @@ namespace UnitTestDeliverySite
 
             ReviewViewModel rvm = new ReviewViewModel();
             rvm.order = new Order();
-            rvm.order.OrderNum = 3;
+            rvm.order.OrderNum = 2;
             string userid = "204688764";
             string details = " TEST TEST";
 

@@ -32,8 +32,11 @@
                 Last Name
             </th>
             <th>
-                ID
+                Order ID
             </th>
+            @*<th>
+                ID
+            </th>*@
 
             <th>
                 Date
@@ -58,8 +61,11 @@
                     @Html.DisplayFor(modelItem => item.UserLastName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UserId)
+                    @Html.DisplayFor(modelItem => item.OrderNum)
                 </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
