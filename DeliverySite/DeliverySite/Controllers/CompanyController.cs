@@ -33,7 +33,7 @@ namespace DeliverySite.Controllers
 
             revView.reviews = companies;
       
-            return View(revView);
+            return View("ViewReviews",revView);
         }
 
         public ActionResult Login()
