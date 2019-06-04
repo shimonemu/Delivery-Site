@@ -82,7 +82,7 @@
         <br />
         <input type="submit" name="login" class="login login-submit" value="Send Request">
     </form>
-
+    @TempData["Error"]
     @*@Html.ValidationSummary()*@
 
     <button style="float:right" type="button" onclick="changeFont()">Change Font!</button>
