@@ -12,50 +12,538 @@
     {
         Layout = "~/Views/Shared/_LayoutCompanies.cshtml";
     }
-    else
-    {
-        Layout = "~/Views/Shared/_Layout.cshtml";
+    //else
+    //{
+    //    Layout = "~/Views/Shared/_Layout.cshtml";
 
-    }
+    //}
 }
 
-<style>
-    .test {
-        background-image: url('https://shopee.co.id/inspirasi-shopee/wp-content/uploads/2018/09/express-delivery.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        max-width: 100%;
-        height: 500px;
-        text-align: right;
-    }
+@*<style>
+        .test {
+            background-image: url('https://shopee.co.id/inspirasi-shopee/wp-content/uploads/2018/09/express-delivery.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            max-width: 100%;
+            height: 500px;
+            text-align: right;
+        }
 
-    body {
-        background-color: dimgrey;
-    }
+        body {
+            background-color: dimgrey;
+        }
 
-    .jumbotron {
-        align-items: flex-start;
-    }
-</style>
-
-
-<div class="jumbotron test">
-    <h1>Delivery</h1>
-    <p class="lead"> </p>
-    <img src="https://image.flaticon.com/icons/png/128/414/414272.png" alt="Sample Photo" />
-</div>
+        .jumbotron {
+            align-items: flex-start;
+        }
+    </style>
 
 
-
-<div class="row">
-    <div class="col-md-4">
-        <h2></h2>
-        <p>
-
-        </p>
-        <p></p>
+    <div class="jumbotron test">
+        <h1>Delivery</h1>
+        <p class="lead"> </p>
+        <img src="https://image.flaticon.com/icons/png/128/414/414272.png" alt="Sample Photo" />
     </div>
 
-</div>
 
-<script src="~/Scripts/bootstrap-accessibility.min.js"></script>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2></h2>
+            <p>
+
+            </p>
+            <p></p>
+        </div>
+
+    </div>
+
+    <script src="~/Scripts/bootstrap-accessibility.min.js"></script>*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ZEN - A Free HTML5 Template With Perfect Balance</title>
+    <meta name="description" content="Zen is a free XHTML template released on a creative commons attribution license" />
+    <meta name="keywords" content="Zen Template" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link href='http://fonts.googleapis.com/css?family=Voces' rel='stylesheet' type='text/css' />
+    <style type="text/css">
+
+        html {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            color: #66696C;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            background: url(images/background.png) repeat left top;
+        }
+
+        a:link, a:hover {
+            color: #66696C;
+            text-decoration: underline;
+        }
+
+        a:active, a:visited {
+            color: #6EBC14;
+            text-decoration: underline;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-family: 'Voces', cursive;
+            font-size: 20px;
+            color: #1e1e1e;
+        }
+
+        h2 {
+            text-transform: uppercase;
+            font-family: 'Voces', cursive;
+            font-size: 16px;
+            color: #1e1e1e;
+        }
+
+        h3 {
+            text-transform: uppercase;
+            font-family: 'Voces', cursive;
+            font-size: 14px;
+            color: #1e1e1e;
+        }
+
+        blockquote {
+            font-family: 'Voces', cursive;
+            font-size: 18px;
+            font-style: italic;
+            width: 500px;
+            margin: 0.25em 0;
+            padding: 0.25em 40px;
+            line-height: 1.45;
+            position: relative;
+            color: #383838;
+            text-indent: 20px;
+        }
+
+            blockquote:before {
+                display: block;
+                content: "\201C";
+                font-size: 80px;
+                position: absolute;
+                left: -20px;
+                top: -20px;
+                color: #7a7a7a;
+            }
+
+            blockquote cite {
+                color: #66696C;
+                font-size: 14px;
+                display: block;
+                margin-top: 5px;
+            }
+
+                blockquote cite:before {
+                    content: "\2014 \2009";
+                }
+
+        .header {
+            float: left;
+            height: 425px;
+            width: 945px;
+            background: #F4F3EF;
+        }
+
+        .wrap {
+            float: left;
+            position: relative;
+            /*  right:-25%;*/
+            width: 945px;
+            padding-right: 20px;
+            padding-left: 120px;
+        }
+
+        .main {
+            float: right;
+            width: 650px;
+            margin: 20px 26px 0px 0px;
+            padding-bottom: 25px;
+        }
+
+        .page {
+            float: right;
+            background: #F4F3EF;
+            height: 100%;
+            width: 945px;
+            padding: 0;
+            margin: 0;
+        }
+        /* sidebar */
+        .sidebar {
+            float: left;
+            margin: 40px 0px 0px 35px;
+            width: 202px;
+            height: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+
+        .sidebar h2 {
+            text-transform: uppercase;
+            font-family: 'Voces', cursive;
+            font-size: 14px;
+            color: #66696C;
+        }
+
+        .sidebar a:link, a:hover, a:visited {
+            color: #6EBC14;
+            text-decoration: underline;
+        }
+
+        .item {
+            margin-bottom: 35px;
+        }
+
+        /* Navigation */
+
+        #menu {
+            float: left;
+            position: relative;
+            top: 27px;
+            left: 6px;
+            display: block;
+            width: 608px;
+        }
+
+            #menu ul {
+                list-style-type: none;
+                width: 608px;
+            }
+
+                #menu ul li {
+                    display: block;
+                    float: left;
+                    width: 115px;
+                    height: 32px;
+                }
+
+            #menu a, #menu a:visited {
+                display: block;
+                width: 100px;
+                height: 32px;
+                background: url(images/nav.png);
+                background-position: left top;
+                background-color: transparent;
+                text-align: center;
+                color: #ffffff;
+                line-height: 32px;
+                text-decoration: none;
+                font-family: arial, sans-serif;
+                font-weight: bold;
+                margin-top: 5px;
+            }
+
+                #menu a:hover {
+                    background-position: -100px 0px;
+                    line-height: 32px;
+                    overflow: hidden;
+                    color: #ffffff;
+                }
+
+                #menu a#selected {
+                    background-position: -100px 0px;
+                    line-height: 32px;
+                }
+
+                    #menu a#selected:hover {
+                        color: white;
+                    }
+        /*END NAVIGATION*/
+
+
+        .topbar {
+            float: right;
+            height: 115px;
+            width: 633px;
+            padding-top: 5px;
+        }
+
+        .blacktab {
+            float: right;
+            position: relative;
+            right: 25px;
+            width: 253px;
+            height: 115px;
+            background: url(images/blacktab.png) top left no-repeat;
+        }
+
+        .logo {
+            position: relative;
+            top: 12px;
+            left: 20px;
+            width: 220px;
+            height: 91px;
+        }
+
+        a img {
+            border: 0;
+            text-decoration: none;
+        }
+
+        .phone {
+            float: right;
+            height: 32px;
+            width: 170px;
+            color: #6EBC14;
+            text-indent: 40px;
+            line-height: 235%;
+            background: url(images/phone.png) center left no-repeat;
+        }
+
+        .social {
+            float: right;
+            padding-right: 20px;
+            height: 32px;
+            width: 142px;
+            display: block;
+            text-indent: -9999px;
+            overflow: hidden;
+        }
+
+        .twitter {
+            float: right;
+            background: url(images/twitter.png) no-repeat top;
+            margin: 0 10px 0 0;
+            height: 32px;
+            width: 32px;
+            display: block;
+            text-indent: -9999px;
+        }
+
+        .twitter a:hover, .twitter a:active, .twitter a:focus {
+            text-decoration: none;
+        }
+
+        .facebook {
+            float: right;
+            background: url(images/facebook.png) no-repeat top;
+            margin: 0 10px 0 0;
+            height: 32px;
+            width: 32px;
+            display: block;
+            text-indent: -9999px;
+        }
+
+        .facebook a:hover, .facebook a:active, .facebook a:focus {
+            text-decoration: none;
+        }
+
+        .linkedin {
+            float: right;
+            background: url(images/linkedin.png) no-repeat top;
+            margin: 0 10px 0 0;
+            height: 32px;
+            width: 32px;
+        }
+
+        .linkedin a:hover, .linkedin a:active, .linkedin a:focus {
+            text-decoration: none;
+        }
+
+        .banner {
+            float: left;
+            position: relative;
+            left: 27px;
+            top: 50px;
+            width: 880px;
+            height: 240px;
+        }
+
+        .banner img {
+            padding: 5px 5px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #cccccc;
+        }
+
+        .footer {
+            float: right;
+            background: #1E1E1E;
+            height: 150px;
+            width: 945px;
+            border-bottom-style: solid;
+            border-bottom-width: 3px;
+            border-bottom-color: #8BCF5E;
+            margin-bottom: 50px; /* gap under footer */
+        }
+
+        .footerbox {
+            width: 945px;
+            height: 115px;
+            background: #343434;
+        }
+        /* Creative Commons License Attrib Css */
+        .creativecommons {
+            width: 190px;
+            height: 35px;
+            float: right;
+            margin-right: 15px;
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .creativecommons img {
+            position: relative;
+            top: 5px;
+            margin-left: 10px;
+        }
+
+        .creativecommons p {
+            margin: 0px;
+            padding: 4px 0 0 0;
+        }
+
+        .html5 {
+            float: left;
+            position: relative;
+            top: 32px;
+            left: 34px;
+            background: url(images/html5.png) no-repeat top;
+            height: 50px;
+            width: 44px;
+            opacity: 0.1;
+        }
+
+        .box1, .box2, .box3 {
+            float: right;
+            width: 217px;
+            height: 90px;
+        }
+
+        .box2, .box3 {
+            margin-right: 60px;
+        }
+
+        .box1 {
+            margin-right: 45px;
+        }
+
+        .footerbox ul {
+            margin-top: 15px;
+            list-style-type: square;
+            color: #757575;
+            font-weight: bold;
+            font-size: 11px;
+            line-height: 150%;
+        }
+
+        .footerbox a:link, .footerbox a:hover {
+            color: #757575;
+            text-decoration: underline;
+        }
+
+        .footerbox a:hover, .footerbox a:visited {
+            color: #b4b4b4;
+            text-decoration: underline;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- Paste Facebook LikeBox Javascript Here -->
+    <div class="wrap" id="test">
+        <div class="header">
+            <div class="topbar">
+                <div class="social">
+                    <a href="#" target="_blank" title="twitter" class="twitter">twitter</a><a href="#" target="_blank" title="facebook" class="facebook">facebook</a><a href="#" target="_blank" title="linkedin" class="linkedin">linkedin</a>
+                </div><!--close social -->
+                <div class="phone">Tel: 0845 47 44736</div>
+                <div id="menu">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div><!-- close menu -->
+            </div><!--close topbar -->
+
+            <div class="blacktab"><div class="logo"><a href="#"><img src="images/logo.png" alt="Zen Template" /></a></div></div>
+            <div class="banner"><img src="images/banner.jpg" height="240" width="880" alt="Zen Banner" /></div>
+        </div><!-- close header -->
+        <div class="page">
+
+            <div class="main">
+                <h1>Welcome To ZEN</h1>
+                <p>This template is coded in W3C valid HTML 5 and CSS 3, it has been tested in internet explorer 10, Google Chrome, and Firefox. Detailed instructions on how to configure a facebook likebox like the one shown in the sidebar are also enclosed within HTML comment tags in the templates index.html file.</p>
+                <blockquote>He who seeds a thought, harvests a destiny.<cite>Zen Proverb</cite></blockquote>
+                <p>Zen is released on a creative commons licence, this means you are free to use the template for both business and personal purposes but the web designers link in the footer must remain. The link has been styled to be as unobtrusive as possible and every attempt has been made to give this template the the look and feel of a professionally designed website rather than that of a free template.</p>
+                <p>Zen also features social media buttons which allow you to quickly and easily display your LinkedIn, Facebook, and Twitter profiles to people visiting your site.</p>
+                <p>The footer area also contains three additional navigations, allowing you to provide links to terms of use, privacy policy and cookie policy pages without sacrificing the overall aesthetics of your website. If this template is well received I may consider porting it to wordpress in the not too distant future.</p>
+                <p>Because the site is coded in valid HTML 5 and CSS 3, page load times are very quick which is beneficial for search engine optimisation, the file size of the page you are reading is just 5.9kb. The Main navigation mouseover images are also pre-loaded to ensure a smooth and enjoyable user experience.</p>
+                <p>If you enjoy using this template and would like to receive updates regarding my future work, please visit my blog by clicking the links in the sidebar and either subscribe via rss to receive email updates, or follow me on Twitter, Facebook, or Google Plus.</p>
+            </div>
+            <div class="sidebar">
+                <div class="item">
+                    <!-- Replace This Code With Your Own Facebook Likebox Code - To Get The Code Go To: http://developers.facebook.com/docs/reference/plugins/like-box/
+                    Paste The Code From Box 2 Below, And The Code From Box 1 Just Below The <body> Tag On Line 12 -->
+                    <img src="images/facebook-likebox.png" height="253" width="200" alt="This Image Is For Demo Purposes Only - Replace This Line With Your Facebook Likebox Code" />
+                    <!-- End Facebook Likebox Code -->
+                </div>
+                <div class="item">
+                    <h2>Latest News</h2>
+                    <p>
+                        <a href="http://www.hiseo.co.uk/seo-blog/monitoring-your-link-profile-in-real-time-with-excel-or-calc/">Monitoring Your Link Profile</a><br />Since Google&#39;s penguin update it has become essential...<br /><a href="http://www.hiseo.co.uk/seo-blog/monitoring-your-link-profile-in-real-time-with-excel-or-calc/">Read More</a><br /><br />
+                        <a href="http://www.hiseo.co.uk/seo-blog/how-to-write-targeted-evergreen-content/">How To Write Evergreen Content</a><br />Many people make the mistake of writing content focussed towards users...<br /><a href="http://www.hiseo.co.uk/seo-blog/how-to-write-targeted-evergreen-content/">Read More</a><br /><br />
+                        <a href="http://www.hiseo.co.uk/seo-blog/organic-seo-trail-map/">Infographic Design From &pound;399</a><br />Infographic design and promotion services available...<br /><a href="http://www.hiseo.co.uk/seo-blog/organic-seo-trail-map/">Read More</a><br /><br />
+                        <a href="http://www.hiseo.co.uk/">Award Winning SEO Services</a><br />HISEO are an award winning SEO company based in Leeds, West Yorkshire... <br /><a href="http://www.hiseo.co.uk/">Read More</a>
+                    </p>
+                </div>
+            </div><!-- close sidebar -->
+        </div><!--close page -->
+        <div class="footer">
+            <div class="html5"></div>
+            <div class="footerbox">
+                <div class="box1">
+                    <ul>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Terms Of Service</a></li>
+                        <li><a href="#">FAQ&#39;s</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="box2">
+                    <ul>
+                        <li><a href="#">Our Vision</a></li>
+                        <li><a href="#">Why Choose Us?</a></li>
+                        <li><a href="#">Prices</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="box3">
+                    <ul>
+                        <li><a href="#">Visit Our Blog</a></li>
+                        <li><a href="#">Eco Policy</a></li>
+                        <li><a href="#">Media</a></li>
+                        <li><a href="#">Customer Care</a></li>
+                        <li><a href="#">Recruitment</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- required for legal template use - please do not remove or edit-->
+            <div class="creativecommons"><p>Design By <a href="http://www.hiseo.co.uk/"><img src="images/hiseo.png" alt="High Impact SEO Leeds" /></a></p></div>
+            <!-- end required for legal template use - please do not remove or edit -->
+        </div>
+    </div>
+</body>
+</html>
